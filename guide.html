@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guida Ufficiale FamLedger - Smart Family Finance</title>
+    
+    <!-- Outfit Font da Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-green: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-purple: #a855f7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 10% 20%, rgba(30, 41, 59, 0.5) 0%, var(--bg-dark) 100%);
+        }
+
+        /* LAYOUT GENERALE */
+        .layout-container {
+            display: flex;
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* SIDEBAR SINISTRA */
+        aside {
+            width: 320px;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            border-right: 1px solid var(--border-color);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 40px 24px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            object-fit: contain;
+            box-shadow: 0 4px 10px rgba(0, 242, 254, 0.2);
+        }
+
+        .brand-title {
+            color: #fff;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .menu-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item a:hover {
+            color: var(--primary);
+            background: rgba(0, 242, 254, 0.05);
+            transform: translateX(4px);
+        }
+
+        .nav-item.active a {
+            color: #0f172a;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
+        }
+
+        .nav-sub-item a {
+            padding-left: 32px;
+            font-size: 13px;
+        }
+
+        /* CONTENUTO PRINCIPALE */
+        main {
+            flex: 1;
+            padding: 60px 80px;
+            max-width: 960px;
+            overflow-y: auto;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            transition: transform 0.2s ease;
+        }
+
+        .back-home:hover {
+            transform: translateX(-4px);
+        }
+
+        h1.main-title {
+            font-size: 44px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro-text {
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+
+        /* SEZIONI E CAPITOLI */
+        section {
+            padding-top: 40px;
+            margin-bottom: 60px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        section:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 24px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: 14px;
+            color: var(--primary);
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #fff;
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 12px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #cbd5e1;
+            margin-bottom: 18px;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            color: #cbd5e1;
+        }
+
+        li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        /* ALERT DEI SCREENSHOT */
+        .screenshot-placeholder {
+            background: rgba(0, 242, 254, 0.03);
+            border: 2px dashed rgba(0, 242, 254, 0.4);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screenshot-placeholder:hover {
+            background: rgba(0, 242, 254, 0.06);
+            border-color: var(--primary);
+        }
+
+        .screenshot-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .screenshot-title {
+            color: var(--primary);
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .screenshot-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* NOTE E SUGGERIMENTI */
+        .info-box {
+            background: rgba(16, 185, 129, 0.05);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 0 16px 16px 0;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .info-box-title {
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .warning-box {
+            background: rgba(245, 158, 11, 0.05);
+            border-left: 4px solid var(--accent-amber);
+            border-radius: 0 16px 16px 0;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .warning-box-title {
+            color: var(--accent-amber);
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pro-box {
+            background: rgba(168, 85, 247, 0.05);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 16px 16px 0;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .pro-box-title {
+            color: var(--accent-purple);
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* TABELLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            text-align: left;
+            padding: 14px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 14px 16px;
+            font-size: 14px;
+            color: #cbd5e1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* CODICE */
+        pre {
+            background: #090d16;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            margin: 24px 0;
+            position: relative;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            color: #38bdf8;
+            line-height: 1.5;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            aside {
+                display: none;
+            }
+            main {
+                padding: 40px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="layout-container">
+        
+        <!-- SIDEBAR -->
+        <aside>
+            <a href="index.html" class="brand-header">
+                <img src="app_logo_new.png" alt="Logo" class="brand-logo">
+                <span class="brand-title">FamLedger</span>
+            </a>
+            
+            <div class="menu-title">Capitoli Guida</div>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#cap1">👋 1. Benvenuto e Avvio</a></li>
+                <li class="nav-item"><a href="#cap2">🏦 2. Gestione Conti</a></li>
+                <li class="nav-item"><a href="#cap3">💸 3. Movimenti standard</a></li>
+                <li class="nav-item"><a href="#cap4">📈 4. Investimenti <span style="font-size: 10px; background: var(--accent-amber); color: #000; padding: 2px 6px; border-radius: 10px; font-weight: 700; margin-left: 6px;">BETA</span></a></li>
+                <li class="nav-item"><a href="#cap5">👥 5. Spese Condivise</a></li>
+                <li class="nav-item"><a href="#cap6">🎯 6. Obiettivi Finanziari</a></li>
+                <li class="nav-item"><a href="#cap7">🏆 7. Gamification & Traguardi</a></li>
+                <li class="nav-item"><a href="#cap8">🔍 8. Analisi Anomalie</a></li>
+                <li class="nav-item"><a href="#cap9">⚙️ 9. Impostazioni App</a></li>
+                <li class="nav-item nav-sub-item"><a href="#cap9-1">🏷️ 9.1 Categorie</a></li>
+                <li class="nav-item nav-sub-item"><a href="#cap9-2">🔄 9.2 Movimenti Ricorrenti</a></li>
+                <li class="nav-item nav-sub-item"><a href="#cap9-3">🔒 9.3 Sicurezza e Privacy</a></li>
+                <li class="nav-item"><a href="#cap10">👑 10. Funzionalità PRO</a></li>
+                <li class="nav-item nav-sub-item"><a href="#cap10-1">📊 10.1 Statistiche</a></li>
+                <li class="nav-item nav-sub-item"><a href="#cap10-2">💾 10.2 Backup & Import</a></li>
+            </ul>
+        </aside>
+
+        <!-- CONTENUTO -->
+        <main>
+            <a href="index.html" class="back-home">← Torna alla Home Page</a>
+            
+            <h1 class="main-title">Guida Completa FamLedger</h1>
+            <p class="intro-text">
+                Benvenuto nella documentazione ufficiale di <strong>FamLedger</strong>. Questa guida è strutturata passo dopo passo 
+                per spiegarti con assoluta semplicità come configurare e utilizzare al meglio ogni singola funzionalità dell'app.
+            </p>
+
+            <!-- CAPITOLO 1 -->
+            <section id="cap1">
+                <h2>👋 Capitolo 1: Benvenuto e Primo Avvio</h2>
+                <p>
+                    FamLedger è progettata con una filosofia rigorosa: "nessun server centrale, nessuna registrazione e 100% offline". 
+                    Tutti i dati che inserisci rimangono blindati all'interno della memoria locale del tuo smartphone.
+                </p>
+
+                <h3>La Schermata di Benvenuto</h3>
+                <p>
+                    Al primissimo avvio dell'applicazione, ti verrà chiesto semplicemente di inserire il "tuo Nome" (es. <em>Antonio</em>) per configurare l'utente principale. Non ti verrà richiesta alcuna password o registrazione email: sarai subito pronto ad usare l'app!
+                </p>
+
+                <div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="welcomepage_ita.jpeg" alt="Schermata di Benvenuto" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">La schermata iniziale di benvenuto per l'inserimento del nome</p>
+                </div>
+
+                <h3>Impostare una Password di Sicurezza (Opzionale)</h3>
+                <p>
+                    Se desideri proteggere l'applicazione da sguardi indiscreti, puoi abilitare una "Password di Accesso":
+                </p>
+                <ol>
+                    <li>Vai su <strong>Impostazioni</strong> (l'icona dell'ingranaggio nel menu in basso).</li>
+                    <li>Scorri fino alla voce "Sicurezza" ed espandi il menu per creare una password</li>
+                    <li>Scegli una password robusta e inserisci un "Suggerimento Password" molto chiaro (es. "Il nome del mio cane").</li>
+                </ol>
+                <p>
+                    Una volta attivata, ad ogni avvio l'applicazione chiederà la password. Il suggerimento ti verrà mostrato solo in caso di 1 tentativi consecutivi errati.
+                </p>
+
+                <div class="warning-box">
+                    <div class="warning-box-title">Attenzione alla Sicurezza!</div>
+                    Poiché FamLedger non salva nulla online, se imposti la password e la dimentichi, "nessuno potrà recuperare i tuoi dati per te". Ricordati di usare sempre un suggerimento che ricordi solo a te la chiave di sblocco!
+                </div>
+            </section>
+
+            <!-- CAPITOLO 2 -->
+            <section id="cap2">
+                <h2>🏦 Capitolo 2: Gestione dei Conti</h2>
+                <p>
+                    Prima di inserire qualsiasi spesa, devi definire "dove sono i tuoi soldi". In FamLedger, ogni spesa o entrata deve essere associata ad un conto specifico.
+                </p>
+
+                <h3>Creare un Nuovo Conto</h3>
+                <ol>
+                    <li>Vai nella sezione <strong>Impostazioni e poi Gestione Conti</strong> dal menu in basso.</li>
+                    <li>Inserisci il <strong>Nome del Conto</strong> (es. <em>Conto Corrente</em>, <em>Contanti</em>).</li>
+                    <li>Scegli il proprietario</li>
+                    <li>Premi <strong>Salva</strong>.</li>
+                </ol>
+				
+                <div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="addconti_ita.jpeg" alt="Schermata di aggiungi conto" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">La schermata creazione conto</p>
+                </div>
+            </section>
+
+            <!-- CAPITOLO 3 -->
+            <section id="cap3">
+                <h2>💸 Capitolo 3: Movimenti e Transazioni</h2>
+                <p>
+                    Registrare le spese quotidiane è un'operazione che richiede pochissimi secondi. FamLedger ti permette di tracciare tre tipi di movimenti: "Uscite, Entrate e Giroconti".
+                </p>
+
+                <h3>1. Spese ed Entrate</h3>
+                <p>
+                    Dalla Dashboard principale, fai tap sul tasto <strong>"+"</strong> e compila i campi:
+                </p>
+                <ul>
+                    <li><strong>Importo</strong>: La cifra spesa o ricevuta.</li>
+                    <li><strong>Descrizione</strong>: Una breve etichetta (es. "Spesa").</li>
+                    <li><strong>Conto</strong>: Su quale conto deve essere addebitata o accreditata la somma.</li>
+                    <li><strong>Categoria</strong>: Seleziona o crea una categoria (es. Alimentari, Auto, Stipendio) per categorizzare il bilancio.</li>
+					<li><strong>Spesa condivisa</strong>: Definisci se una spesa è da dividere con qualcuno.</li>
+				</ul>
+				
+				<div class="info-box">
+					<div class="info-box-title">Nota sulle Spese Condivise</div>
+					FamLedger ti permette di dividere le spese in modo flessibile con il tuo partner, la tua famiglia o i coinquilini. Puoi impostare quote in parti uguali o personalizzate, gestendo conti e rimborsi in tempo reale. Per scoprire come configurare i partecipanti e saldare i debiti, consulta la sezione dedicata nel <a href="#cap5" style="color: var(--accent-green); font-weight: 600;">Capitolo 5: Spese Condivise</a>.
+				</div>
+				
+				<div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="uscite.jpeg" alt="Schermata di aggiungi movimento" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">La schermata inserimento movimento</p>
+                </div>
+
+                <h3>2. Giroconti (Trasferimenti Interni)</h3>
+                <p>
+                    Se sposti denaro da un tuo conto a un altro (ad esempio prelevi 100€ dal bancomat per metterli nel portafoglio dei Contanti):
+                    attiva il selettore <strong>Giroconto (Trasferimento)</strong> in cima alla schermata. Ti verranno chiesti il "Conto di Partenza" (da dove escono i soldi) e il "Conto di Destinazione" (dove entrano).
+                </p>
+
+        		<div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="giroconti.jpeg" alt="Schermata di aggiungi giroconto" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">La schermata inserimento giroconto</p>
+                </div>
+
+
+                <h3>3. Movimenti Ricorrenti (Bollette, Stipendi, Abbonamenti)</h3>
+                <p>
+                    Se hai spese fisse mensili (es.  Affitto):
+                </p>
+                <ol>
+                    <li>Vai in <strong>Impostazioni > Movimenti Ricorrenti</strong>.</li>
+                    <li>Premi <strong>"+"</strong> e imposta la ricorrenza (es. Ogni 1 Mese, Ogni 1 Anno).</li>
+                    <li>L'app genererà automaticamente la transazione, senza che tu debba fare nulla!</li>
+                </ol>
+            </section>
+
+            <!-- CAPITOLO 4 -->
+            <section id="cap4">
+                <h2>📈 Capitolo 4: Investimenti (Mercati e Risparmi) <span style="font-size: 14px; background: var(--accent-amber); color: #000; padding: 4px 10px; border-radius: 20px; font-weight: 700; margin-left: 10px; vertical-align: middle;">BETA</span></h2>
+                
+                <div class="warning-box">
+                    <div class="warning-box-title">Nota sulla Versione BETA</div>
+                    La sezione "Investimenti" è attualmente rilasciata in versione "Beta sperimentale". Stiamo attivamente perfezionando l'integrazione delle quotazioni online ed i calcoli della maturazione degli interessi. Se noti discrepanze o comportamenti imprevisti, ti invitiamo a segnalarcelo!
+                </div>
+
+                <p>
+                    FamLedger include una potente sezione "Investimenti" studiata sia per chi investe in borsa, sia per chi preferisce strumenti sicuri a rendimento fisso.
+                </p>
+
+                <h3>Mercati (Variabile)</h3>
+                <p>
+                    Usa questa sezione per ETF, Azioni o Criptovalute. 
+                    L'app è dotata di un integratore online automatico. Ti basta inserire il "Ticker" ufficiale (es. <em>SWDA.MI</em> o <em>AAPL</em>) e attivare la ricerca automatica. L'app scaricherà il prezzo aggiornato e calcolerà il tuo profitto o perdita basandosi sul tuo "Prezzo Medio di Carico (PMC)" e la "Quantità" inserita.
+                </p>
+
+                <h3>Risparmi (Fisso)</h3>
+                <p>
+                    Usa questa sezione per "Conti Deposito", BTP o Buoni Fruttiferi.
+                    Qui non serve un ticker: imposti il "Capitale Depositato", il "Tasso di Interesse Annuo (%)", l'"Aliquota Fiscale" (es. 26% o 12.5% per i titoli di stato) e la "Data di decorrenza". L'app calcolerà giorno per giorno gli interessi maturati in tempo reale!
+                </p>
+
+              <div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="investimenti.jpeg" alt="Schermata investimenti" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">La schermata investimenti</p>
+              </div>
+            </section>
+
+            <!-- CAPITOLO 5 -->
+            <section id="cap5">
+                <h2>👥 Capitolo 5: Spese Condivise (Co-debitori e Rimborsi)</h2>
+                <p>
+                    Una delle funzioni più potenti di FamLedger è la gestione dei conti condivisi (ideale per coppie, famiglie o coinquilini) per rispondere alla classica domanda: ""Chi deve dare quanto a chi?"".
+                </p>
+
+                <h3>1. Aggiungere i Partecipanti</h3>
+                <p>
+                    Vai in <strong>Impostazioni > Partecipanti</strong> e inserisci i nomi dei tuoi familiari (es. <em>Marco</em>, <em>Giulia</em>).
+                </p>
+
+                <h3>2. Registrare una Spesa di Gruppo</h3>
+                <p>
+                    Quando inserisci una spesa (es. Spesa alimentare da 150€ pagata interamente da te):
+                </p>
+                <ol>
+                    <li>Nel form di inserimento spesa, scorri in basso fino alla sezione <strong>Spesa condivisa</strong>.</li>
+                    <li>Seleziona i partecipanti coinvolti (es. Giulia).</li>
+                    <li>Scegli se dividere in <strong>parti uguali</strong> o se assegnare "quote personalizzate" (es. 75€ a Giulia).</li>
+                    <li>Salva la spesa. L'app registrerà che tu hai anticipato 150€ e che  Giulia ti deve 75€</li>
+                </ol>
+				
+		      <div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="spesaCondivisa.jpeg" alt="Schermata spesa condivisa" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">La schermata spesa condivisa</p>
+              </div>
+
+                <h3>3. Saldo Veloce dei Debiti (Singolo o Tutti)</h3>
+                <p>
+                    Dalla pagina principale, la sezione <strong>Situazione debiti</strong> ti mostrerà un riepilogo in tempo reale.
+                    Per saldare i debiti, hai due possibilità:
+                </p>
+                <ul>
+                    <li><strong>Saldare singolo movimento</strong>: Entra in Movimenti (menu in basso) e clicca su "Salda" relativa al movimento che vuoi saldare. L'app creerà automaticamente un movimento di rimborso azzerando il debito.
+					    <div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="saldoSingolo.jpeg" alt="Schermata salda movimento singolo" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">Schermata salda movimento singolo</p>
+              </div>
+					
+					</li>
+                   
+
+				   <li><strong>Saldare tutto</strong>: Dalla pagina iniziale potrai cliccare su Salda tutto per poter saldare tutti i debiti in una sola volta</li>
+                </ul>
+
+
+
+    <div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="saldaTutti.jpeg" alt="Schermata salda tutti" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">Schermata salda tutti</p>
+              </div>
+
+               
+            </section>
+
+            <!-- CAPITOLO 6 -->
+            <section id="cap6">
+                <h2>🎯 Capitolo 6: Obiettivi</h2>
+                <p>
+                    Gli "Obiettivi" (Target) ti consentono di pianificare e tracciare i tuoi risparmi per progetti futuri concreti, come l'acquisto di una nuova auto, una vacanza o la creazione di un fondo di emergenza.
+                </p>
+
+                <h3>Creare e Tracciare un Obiettivo</h3>
+                <ol>
+                    <li>Vai alla schermata <strong>Obiettivi</strong> dal menu "Altro" dell'app.</li>
+                    <li>Fai tap sul pulsante <strong>"+"</strong> in basso a destra.</li>
+                    <li>Inserisci una Descrizione (es. <em>Nuova Macchina</em>).</li>
+                    <li>Imposta il "Target" che desideri accumulare (es. <em>15.000€</em>).</li>
+                    <li>Definisci una "Data Scadenza" entro la quale desideri completare il risparmio.</li>
+                    <li>Associa un "Conto Collegato" su cui accumuli questi risparmi. (opzionale)</li>
+                </ol>
+                <p>
+                    L'applicazione monitorerà automaticamente i progressi, mostrandoti una "barra percentuale (%)" visiva 
+					</p>
+				<div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="Obiettivi.jpeg" alt="Schermata Obiettivi" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">Schermata Obiettivi</p>
+              </div>
+            </section>
+
+            <!-- CAPITOLO 7 -->
+            <section id="cap7">
+                <h2>🏆 Capitolo 7: Gamification</h2>
+                <p>
+                    FamLedger rende la gestione delle finanze personali divertente e stimolante grazie a un innovativo sistema di "Gamification".
+                </p>
+
+                <h3>Sbloccare le Medaglie Finanziarie</h3>
+                <p>
+                    L'educazione finanziaria si unisce al game design! Man mano che utilizzi l'applicazione in modo sano e costante, sbloccherai automaticamente dei traguardi e riceverai delle medaglie virtuali:
+                </p>
+                <ul>
+                    <li><strong>Cecchino del Budget</strong>: Assegnato se rimani entro il tuo budget mensile di spesa con estrema precisione (spendendo tra il 90% e il 100% dell'importo pianificato).</li>
+                    <li><strong>Salto di Qualità</strong>: Sbloccato se in un mese il tuo surplus di risparmio (Entrate - Uscite) supera il 30% del totale delle entrate mensili.</li>
+                    <li><strong>Cacciatore di Obiettivi</strong>: Raggiunto non appena completi con successo almeno uno dei tuoi obiettivi di risparmio.</li>
+                    <li><strong>Tabula Rasa</strong>: Sbloccato nel momento in cui saldi tutti i debiti attivi con gli altri partecipanti del bilancio condiviso.</li>
+                    <li><strong>Risparmiatore Costante</strong>: Un premio alla tua costanza, sbloccato mantenendo un surplus positivo (entrate maggiori delle uscite) per ben 6 mesi consecutivi.</li>
+                    <li><strong>Early Bird</strong>: Assegnato se registri almeno un movimento nei primi 5 giorni del mese per 3 mesi consecutivi.</li>
+                    <li><strong>Pianificatore Consapevole</strong>: Medaglia sbloccata "Una Tantum" nel momento in cui configuri per la prima volta un budget di spesa mensile.</li>
+                    <li><strong>Debito Estinto</strong>: Un traguardo speciale "Una Tantum" sbloccato quando tutti i debiti storici registrati nell'applicazione risultano definitivamente saldati.</li>
+                    <li><strong>Traguardi di Patrimonio Netto (Una Tantum)</strong>: Quattro medaglie d'oro esclusive che celebrano la crescita del tuo patrimonio complessivo (somma di conti liquidi e controvalore degli investimenti):
+                        <ul>
+                            <li><strong>L'Inizio del Viaggio</strong>: Raggiungere un patrimonio netto di almeno 10.000.</li>
+                            <li><strong>Costruttore di Capitali</strong>: Raggiungere un patrimonio netto di almeno 50.000.</li>
+                            <li><strong>Patrimonio a Sei Cifre</strong>: Raggiungere un patrimonio netto di almeno 100.000.</li>
+                            <li><strong>Indipendenza Finanziaria</strong>: Raggiungere l'incredibile traguardo di 250.000 in patrimonio netto totale.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+   		<div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="traguardi.jpeg" alt="Schermata traguardi" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">Schermata traguardi</p>
+              </div>
+            </section>
+
+            <!-- CAPITOLO 8 -->
+            <section id="cap8">
+                <h2>🔍 Capitolo 8: Rilevamento delle Anomalie di Spesa</h2>
+                <p>
+                    La schermata <strong>Anomalie</strong> agisce come una sentinella intelligente per il tuo bilancio familiare. Invece di limitarsi a mostrare un elenco di spese, l'applicazione confronta in tempo reale ogni singola spesa del mese corrente con la tua <strong>media storica di spesa per transazione</strong> in quella determinata categoria (analizzando lo storico fino a 24 mesi precedenti).
+                </p>
+                
+                <p>
+                    Se una specifica transazione supera questa media storica oltre una determinata percentuale di tolleranza, l'app la segnalerà immediatamente come spesa anomala.
+                </p>
+
+                <h3>Come funziona l'algoritmo di rilevamento?</h3>
+                <p>
+                    L'app analizza le transazioni registrate ed elabora tre diversi livelli di severità per lo sforamento, basandosi sulle soglie percentuali configurabili in <strong>Impostazioni > Soglie Anomalia</strong>:
+                </p>
+                <ul>
+                    <li><strong>🔵 Anomalia Bassa</strong>: Segnalata se la spesa supera la media storica della categoria oltre la soglia minima impostata (es. superiore al +20%). Viene visualizzata con un'etichetta blu.</li>
+                    <li><strong>🟡 Anomalia Media</strong>: Segnalata se la spesa supera la media storica oltre la soglia intermedia (es. superiore al +50%). Viene evidenziata in giallo/arancione.</li>
+                    <li><strong>🔴 Anomalia Alta</strong>: Rilevata quando la singola transazione registra un picco eccezionale che supera la media oltre la soglia massima (es. superiore al +100%). Viene mostrata con un'etichetta rossa per richiamare subito la tua attenzione.</li>
+                </ul>
+
+                <p>
+                    All'interno della pagina Anomalie, puoi utilizzare i comodi filtri in alto per analizzare periodi specifici (selezionando <strong>Anno</strong> e <strong>Mese</strong>) oppure per filtrare le anomalie visualizzate in base al loro livello di gravità (<strong>Tutti</strong>, <strong>Bassa</strong>, <strong>Media</strong>, <strong>Alta</strong>).
+                </p>
+
+                <div class="info-box">
+                    <div class="info-box-title">Disponibilità della Funzione</div>
+                    Il Rilevamento delle Anomalie è una funzionalità <strong>interamente gratuita e accessibile a tutti gli utenti</strong>. Se utilizzi la versione standard dell'app, in questa schermata verrà visualizzato un banner pubblicitario, che viene rimosso sbloccando la versione PRO.
+                </div>
+
+     		<div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="anomalie.jpeg" alt="Schermata anomalie" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">Schermata anomalie</p>
+              </div>
+            </section>
+
+            <!-- CAPITOLO 9 -->
+            <section id="cap9">
+                <h2>⚙️ Capitolo 9: Impostazioni dell'Applicazione </h2>
+                <p>
+                    La schermata "Impostazioni" è il centro di controllo da cui configurare l'intero comportamento di FamLedger. È un capitolo fondamentale che include diversi strumenti avanzati di personalizzazione del tuo bilancio.
+                </p>
+
+       		<div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="impostazioni.jpeg" alt="Schermata impostazioni" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">Schermata impostazioni</p>
+              </div>
+
+                <!-- 9.1 CATEGORIE -->
+                <div id="cap9-1">
+                    <h4>🏷️ 9.1 Gestione delle Categorie Personalizzate</h4>
+                    <p>
+                        In FamLedger sei libero di creare le categorie di spesa ed entrata che più si adattano alla tua vita reale. L'app non ti impone un set rigido!
+                    </p>
+                    <p>
+                        <strong>Creare una Categoria Personalizzata</strong>:
+                    </p>
+                    <ol>
+                        <li>Accedi alla sezione <strong>Categorie</strong> (dal menu <em>Altro > Impostazioni > Categorie</em>).</li>
+                        <li>Troverai direttamente in cima alla schermata il comodo pannello di inserimento/modifica.</li>
+                        <li>Inserisci il nome che desideri dare alla categoria nel campo <strong>Nome Categoria</strong> (es. <em>Palestra</em> o <em>Ristoranti</em>).</li>
+                        <li>Scegli la tipologia della categoria tra <strong>Uscite</strong> o <strong>Entrate</strong> selezionando i filtri corrispondenti. Il colore identificativo (rosso per le uscite e verde per le entrate) viene abbinato in modo del tutto automatico e dinamico dall'app per mantenere l'armonia cromatica, perciò non dovrai selezionarlo manualmente.</li>
+                        <li>Tocca il pulsante circolare dell'icona a sinistra del modulo per aprire il pannello di selezione inferiore (bottom sheet) e scegli l'<strong>icona personalizzata</strong> che preferisci tra le tantissime a disposizione.</li>
+                        <li>Premi il pulsante <strong>Aggiungi</strong> (o <strong>Salva</strong> se stai modificando una categoria esistente) per rendere subito attiva la categoria.</li>
+                    </ol>
+                    <p>
+                        Puoi modificare o eliminare in qualsiasi momento le categorie create (ad eccezione di quelle di sistema) tramite le icone di modifica (matita) ed eliminazione (cestino) posizionate a fianco di ciascuna voce nell'elenco.
+                    </p>
+
+                    <div class="warning-box">
+                        <div class="warning-box-title">Categorie di Sistema Riservate</div>
+                        <p style="margin-bottom: 10px;">
+                            FamLedger include alcune <strong>Categorie di Sistema</strong> speciali che non possono essere modificate o eliminate in quanto necessarie per il corretto funzionamento delle automazioni dell'app:
+                        </p>
+                        <ul style="margin-bottom: 0;">
+                            <li><strong>Giroconto</strong>: Utilizzata automaticamente quando sposti fondi tra due dei tuoi conti (trasferimenti interni).</li>
+                            <li><strong>Rimborso, Saldo, Investimento, Stipendio, Altro</strong>: Categorie predefinite ed essenziali per tracciare le transazioni automatiche del bilancio familiare.</li>
+                            <li><strong>Prestito</strong>: Una categoria di sistema eccezionalmente potente progettata per le spese anticipate. A differenza delle spese condivise normali (dove la cifra viene ripartita includendo anche la quota di chi ha pagato), quando registri un movimento contrassegnato come <strong>Prestito</strong>, l'app assegna il 100% dell'importo come debito esclusivo suddiviso tra gli altri partecipanti selezionati. La quota di chi ha effettuato il pagamento viene posta automaticamente a zero.</li>
+                        </ul>
+                    </div>
+
+               		<div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="categorie.jpeg" alt="Schermata categorie" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">Schermata categorie</p>
+              </div>
+                </div>
+
+                <!-- 9.2 MOVIMENTI RICORRENTI -->
+                <div id="cap9-2" style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
+                    <h4>🔄 9.2 Movimenti Ricorrenti ed Automazioni</h4>
+                    <p>
+                        Non inserire a mano le stesse transazioni ogni mese! Per bollette, abbonamenti (Netflix, Spotify), affitto o stipendi, imposta una ricorrenza automatica:
+                    </p>
+                    <ol>
+                        <li>In <strong>Impostazioni > Movimenti Ricorrenti</strong>, premi il tasto <strong>"+"</strong>.</li>
+                        <li>Compila i dettagli (importo, descrizione, conto addebito e categoria).</li>
+                        <li>Imposta la "Frequenza" (es. ogni 1 Mese, ogni 1 Anno, ogni  Settimana).</li>
+                        <li>All'arrivo della scadenza, FamLedger inserirà automaticamente la transazione nel tuo bilancio</li>
+                    </ol>
+
+              		<div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="ricorrenti.jpeg" alt="Schermata movimenti ricorrenti" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">Schermata movimenti ricorrenti</p>
+              </div>
+                </div>
+
+                <!-- 9.3 SICUREZZA E PRIVACY -->
+                <div id="cap9-3" style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
+                    <h4>🔒 9.3 Sicurezza e Privacy (Password & Offuscamento)</h4>
+                    <p>
+                        FamLedger ti offre due livelli avanzati per tutelare i tuoi dati sensibili quando usi l'app in pubblico:
+                    </p>
+                    <ul>
+                        <li><strong>🔒 Password di Sicurezza (Offline)</strong>: Se attivata nelle impostazioni, protegge l'accesso all'applicazione richiedendo la password all'avvio. Nel caso in cui dovessi inserire una password errata, <strong>il suggerimento password da te configurato ti verrà mostrato immediatamente fin dal primo tentativo errato</strong>, aiutandoti a sbloccare subito i tuoi dati in caso di piccoli vuoti di memoria.</li>
+                        <li><strong>🕶️ Modalità Offusca Importi</strong>: Attivando questo switch, tutte le cifre e i saldi presenti nella Dashboard principale e nei conti verranno temporaneamente rimpiazzati da dei pallini discreti (es. <em>•••,•• €</em>). Potrai svelarli temporaneamente con un tap, ideale quando apri l'app in metropolitana o in presenza di altre persone!</li>
+                    </ul>
+
+                		<div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="sicurezza.jpeg" alt="Schermata sicurezza" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">Schermata sicurezza</p>
+              </div>
+                </div>
+
+                <!-- 9.4 PROFILO E PREFERENZE -->
+                <div style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
+                    <h4>💱 9.4 Profilo, Partecipanti e Preferenze Locali</h4>
+                    <ul>
+                        <li><strong>Modifica Profilo</strong>: Cambia il tuo nome in qualunque momento.</li>
+                        <li><strong>Gestione Partecipanti</strong>: Aggiungi, modifica o disattiva i familiari/coniugi/coinquilini con cui dividi i debiti comuni.</li>
+                        <li><strong>Lingua e Valuta</strong>: Scegli runtime la tua valuta preferita e la localizzazione in-app tra le 6 lingue disponibili (Italiano, Inglese, Spagnolo, Francese, Tedesco, Portoghese) per adattare l'app al tuo locale di riferimento.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CAPITOLO 10 -->
+            <section id="cap10">
+                <h2>👑 Capitolo 10: FamLedger PRO (Funzionalità Esclusive)</h2>
+                <p>
+                    Per gli utenti che desiderano analizzare a fondo la propria situazione patrimoniale e garantire la sicurezza dei propri dati storici nel tempo, abbiamo creato "FamLedger PRO". 
+                    Un unico acquisto <em>Una Tantum</em> (compri una volta sola nello Store ed è tuo per sempre) che sblocca il pieno potenziale dell'applicazione ed "è un supporto diretto e fondamentale al lavoro e alla dedizione del nostro team indipendente". Il tuo acquisto ci permette di continuare a migliorare FamLedger, mantenendola un'app sicura, 100% offline, priva di tracciamenti e totalmente incentrata sulla tua privacy!
+                </p>
+
+       
+
+                <!-- 10.1 STATISTICHE -->
+                <div id="cap10-1">
+                    <h4>📊 10.1 Grafici e Statistiche del Patrimonio Netto</h4>
+                    <p>
+                        Comprendere a fondo l'andamento della propria ricchezza nel tempo è fundamental per prendere decisioni consapevoli.
+                    </p>
+
+                    <div class="pro-box">
+                        <div class="pro-box-title">Sezione Esclusiva PRO</div>
+                        L'intera visualizzazione della sezione "Statistiche" ed i relativi grafici dettagliati di andamento del patrimonio netto sono sbloccabili unicamente acquistando la versione "PRO" dell'applicazione.
+                    </div>
+
+                    <p>
+                        Attivando la versione PRO avrai accesso ad un grafico a linee che mostra l'evoluzione del tuo "Patrimonio Netto" complessivo nel tempo. Questo valore è calcolato sommando in tempo reale il saldo di tutti i tuoi conti ed il controvalore aggiornato di tutti i tuoi investimenti (sia mercati che rendimenti fissi).
+                    </p>
+
+               		<div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="statistiche.jpeg" alt="Schermata statistiche" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">Schermata statistiche</p>
+              </div>
+                </div>
+
+                <!-- 10.2 BACKUP -->
+                <div id="cap10-2" style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
+                    <h4>💾 10.2 Backup, Ripristino e Migrazioni (JSON/CSV)</h4>
+                    <p>
+                        Visto che FamLedger è 100% offline, "fare il backup è fondamentale". Se cambi telefono o formatti il dispositivo, avrai bisogno di questo file per non perdere lo storico delle tue finanze.
+                    </p>
+
+                    <div class="pro-box">
+                        <div class="pro-box-title">Sezione Esclusiva PRO</div>
+                        L'accesso all'esportazione ed importazione completa dei dati tramite JSON o CSV fa parte delle funzionalità "FamLedger PRO" per garantirti la massima professionalità e sicurezza aziendale.
+                    </div>
+
+                    <p>
+                        <strong>Esportazione JSON</strong>: Crea un file contenente tutti i tuoi conti, transazioni, partecipanti e investimenti in formato crittografato pronto per essere condiviso su Google Drive, inviato via email o salvato sul tuo computer.
+                    </p>
+                    <p>
+                        <strong>Esportazione CSV</strong>: Ti consente di esportare l'elenco delle transazioni in un foglio di calcolo compatibile con Excel o Google Sheets per condurre analisi e grafici personalizzati sul computer.
+                    </p>
+
+                        		<div class="screenshot-container" style="text-align: center; margin: 30px 0;">
+                    <img src="backup.jpeg" alt="Schermata backup" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">Schermata backup</p>
+              </div>
+                </div>
+
+                <!-- 10.3 SENZA PUBBLICITA -->
+                <div style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
+                    <h4>🚫 10.3 Esperienza 100% Senza Pubblicità</h4>
+                    <p>
+                        Sbloccando la versione PRO, l'applicazione eliminerà all'istante "ogni forma di banner pubblicitario" o inserzione da tutte le schermate operative del tuo bilancio familiare (Dashboard, Movimenti, Investimenti, Anomalie, Traguardi, Obiettivi), lasciandoti uno spazio di analisi pulito e privo di distrazioni.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // Semplice script per evidenziare il capitolo corrente nella sidebar durante lo scorrimento
+        const sections = document.querySelectorAll('section, main > section > div[id]');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 180)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.querySelector('a').getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

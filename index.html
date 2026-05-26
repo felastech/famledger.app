@@ -148,6 +148,35 @@
             margin-bottom: 40px;
             box-shadow: 0 10px 20px rgba(0, 242, 254, 0.2);
         }
+        
+        /* Bottone Guida Ufficiale */
+        .guide-btn {
+            width: 100%;
+            background: rgba(0, 242, 254, 0.08);
+            color: #00f2fe;
+            text-decoration: none;
+            padding: 16px 24px;
+            border-radius: 18px;
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0, 242, 254, 0.05);
+        }
+
+        .guide-btn:hover {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            color: #0f172a;
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 242, 254, 0.3);
+        }
 
         footer {
             margin-top: 40px;
@@ -181,6 +210,16 @@
         <!-- Badge Store -->
         <div class="store-badge">
             Disponibile su Google Play Store
+        </div>
+
+        <!-- Bottoni Guida Ufficiale -->
+        <div style="display: flex; gap: 12px; width: 100%; margin-bottom: 24px;">
+            <a href="guide.html" class="guide-btn" style="flex: 1; margin-bottom: 0;">
+                📚 Guida (IT)
+            </a>
+            <a href="guide_en.html" class="guide-btn" style="flex: 1; margin-bottom: 0;">
+                📖 Guide (EN)
+            </a>
         </div>
 
         <!-- Link Documentazione -->

@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FamLedger Official Guide - Smart Family Finance</title>
+    
+    <!-- Outfit Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-green: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-purple: #a855f7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 10% 20%, rgba(30, 41, 59, 0.5) 0%, var(--bg-dark) 100%);
+        }
+
+        /* GENERAL LAYOUT */
+        .layout-container {
+            display: flex;
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* LEFT SIDEBAR */
+        aside {
+            width: 320px;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            border-right: 1px solid var(--border-color);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 40px 24px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            object-fit: contain;
+            box-shadow: 0 4px 10px rgba(0, 242, 254, 0.2);
+        }
+
+        .brand-title {
+            color: #fff;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .menu-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item a:hover {
+            color: var(--primary);
+            background: rgba(0, 242, 254, 0.05);
+            transform: translateX(4px);
+        }
+
+        .nav-item.active a {
+            color: #0f172a;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
+        }
+
+        .nav-sub-item a {
+            padding-left: 32px;
+            font-size: 13px;
+        }
+
+        /* MAIN CONTENT */
+        main {
+            flex: 1;
+            padding: 60px 80px;
+            max-width: 960px;
+            overflow-y: auto;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            transition: transform 0.2s ease;
+        }
+
+        .back-home:hover {
+            transform: translateX(-4px);
+        }
+
+        h1.main-title {
+            font-size: 44px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro-text {
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+
+        /* SECTIONS & CHAPTERS */
+        section {
+            padding-top: 40px;
+            margin-bottom: 60px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        section:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 24px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: 14px;
+            color: var(--primary);
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #fff;
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 12px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #cbd5e1;
+            margin-bottom: 18px;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            color: #cbd5e1;
+        }
+
+        li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        /* SCREENSHOT PLACEHOLDERS */
+        .screenshot-placeholder {
+            background: rgba(0, 242, 254, 0.03);
+            border: 2px dashed rgba(0, 242, 254, 0.4);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screenshot-placeholder:hover {
+            background: rgba(0, 242, 254, 0.06);
+            border-color: var(--primary);
+        }
+
+        .screenshot-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .screenshot-title {
+            color: var(--primary);
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .screenshot-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* INFO & WARNING BOXES */
+        .info-box {
+            background: rgba(16, 185, 129, 0.05);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 0 16px 16px 0;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .info-box-title {
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .warning-box {
+            background: rgba(245, 158, 11, 0.05);
+            border-left: 4px solid var(--accent-amber);
+            border-radius: 0 16px 16px 0;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .warning-box-title {
+            color: var(--accent-amber);
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pro-box {
+            background: rgba(168, 85, 247, 0.05);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 16px 16px 0;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .pro-box-title {
+            color: var(--accent-purple);
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* TABLES */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            text-align: left;
+            padding: 14px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 14px 16px;
+            font-size: 14px;
+            color: #cbd5e1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* CODE BLOCKS */
+        pre {
+            background: #090d16;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            margin: 24px 0;
+            position: relative;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            color: #38bdf8;
+            line-height: 1.5;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            aside {
+                display: none;
+            }
+            main {
+                padding: 40px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="layout-container">
+        
+        <!-- SIDEBAR -->
+        <aside>
+            <a href="index.html" class="brand-header">
+                <img src="app_logo_new.png" alt="Logo" class="brand-logo">
+                <span class="brand-title">FamLedger</span>
+            </a>
+            
+            <div class="menu-title">Guide Chapters</div>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#cap1">👋 1. Welcome & Setup</a></li>
+                <li class="nav-item"><a href="#cap2">🏦 2. Account Management</a></li>
+                <li class="nav-item"><a href="#cap3">💸 3. Standard Transactions</a></li>
+                <li class="nav-item"><a href="#cap4">📈 4. Investments <span style="font-size: 10px; background: var(--accent-amber); color: #000; padding: 2px 6px; border-radius: 10px; font-weight: 700; margin-left: 6px;">BETA</span></a></li>
+                <li class="nav-item"><a href="#cap5">👥 5. Shared Expenses</a></li>
+                <li class="nav-item"><a href="#cap6">🎯 6. Financial Goals</a></li>
+                <li class="nav-item"><a href="#cap7">🏆 7. Gamification & Achievements</a></li>
+                <li class="nav-item"><a href="#cap8">🔍 8. Anomaly Detection</a></li>
+                <li class="nav-item"><a href="#cap9">⚙️ 9. App Settings</a></li>
+                <li class="nav-item nav-sub-item"><a href="#cap9-1">🏷️ 9.1 Categories</a></li>
+                <li class="nav-item nav-sub-item"><a href="#cap9-2">🔄 9.2 Recurring Items</a></li>
+                <li class="nav-item nav-sub-item"><a href="#cap9-3">🔒 9.3 Security & Privacy</a></li>
+                <li class="nav-item"><a href="#cap10">👑 10. PRO Features</a></li>
+                <li class="nav-item nav-sub-item"><a href="#cap10-1">📊 10.1 Statistics</a></li>
+                <li class="nav-item nav-sub-item"><a href="#cap10-2">💾 10.2 Backup & Import</a></li>
+            </ul>
+        </aside>
+
+        <!-- CONTENT -->
+        <main>
+            <a href="index.html" class="back-home">← Back to Home Page</a>
+            
+            <h1 class="main-title">FamLedger Official Guide</h1>
+            <p class="intro-text">
+                Welcome to the official <strong>FamLedger</strong> documentation. This step-by-step guide is designed 
+                with absolute simplicity to help you configure and make the absolute most of every single feature in the app.
+            </p>
+
+            <!-- CHAPTER 1 -->
+            <section id="cap1">
+                <h2>👋 Chapter 1: Welcome and Setup</h2>
+                <p>
+                    FamLedger is built with a strict philosophy: **no central servers, no registration, and 100% offline**. 
+                    All data you input stays completely locked inside your smartphone's local memory.
+                </p>
+
+                <h3>Welcome Screen</h3>
+                <p>
+                    Upon launching the app for the very first time, you will simply be asked to enter **your Name** (e.g., <em>Antonio</em>) to initialize the main user profile. No email address, password, or registration is required: you are instantly ready to use the app!
+                </p>
+
+                <div class="screenshot-placeholder">
+                    <span class="screenshot-icon">📸</span>
+                    <span class="screenshot-title">SCHERMO_PRIMO_AVVIO_NOME</span>
+                    <span class="screenshot-desc">Capture the initial screen where the app greets you and asks to type your name to begin.</span>
+                </div>
+
+                <h3>Set a Security Password (Optional)</h3>
+                <p>
+                    If you wish to secure the application against prying eyes when lending your phone to family or friends, you can enable a **Lock Password**:
+                </p>
+                <ol>
+                    <li>Go to <strong>Settings</strong> (the gear icon in the bottom menu bar).</li>
+                    <li>Scroll down to **Security Password** and toggle it on.</li>
+                    <li>Choose a strong password and enter a clear **Password Hint** (e.g., "My dog's name").</li>
+                </ol>
+                <p>
+                    Once enabled, the application will ask for your password every time it opens. The hint will only be shown after 3 consecutive wrong attempts.
+                </p>
+
+                <div class="warning-box">
+                    <div class="warning-box-title">Important Security Note!</div>
+                    Since FamLedger does not store anything online, if you set a password and forget it, **no one can recover your data for you**. Always make sure to use a clear hint that only you understand!
+                </div>
+            </section>
+
+            <!-- CHAPTER 2 -->
+            <section id="cap2">
+                <h2>🏦 Chapter 2: Account Management (Your Foundation)</h2>
+                <p>
+                    Before recording any expense, you must define **where your money is**. In FamLedger, every expense or income must be linked to a specific account.
+                </p>
+
+                <h3>Create a New Account</h3>
+                <ol>
+                    <li>Go to the <strong>Accounts</strong> screen from the bottom menu.</li>
+                    <li>Tap the round <strong>"+"</strong> button at the bottom right.</li>
+                    <li>Enter the <strong>Account Name</strong> (e.g., <em>Bank Account</em>, <em>Cash</em>, <em>Revolut Card</em>).</li>
+                    <li>Choose the **Currency** (EUR, USD, etc.).</li>
+                    <li>Set the <strong>Initial Balance</strong> (how much money is currently in this account).</li>
+                    <li>Pick a **Custom Color** to easily recognize it in charts.</li>
+                    <li>Tap <strong>Save</strong>.</li>
+                </ol>
+
+                <div class="screenshot-placeholder">
+                    <span class="screenshot-icon">📸</span>
+                    <span class="screenshot-title">SCHERMO_AGGIUNGI_CONTO</span>
+                    <span class="screenshot-desc">Capture the account creation form populated with an example (e.g., "Bank Account", Balance $1,500).</span>
+                </div>
+            </section>
+
+            <!-- CHAPTER 3 -->
+            <section id="cap3">
+                <h2>💸 Chapter 3: Movements and Transactions</h2>
+                <p>
+                    Recording daily expenses takes only a few seconds. FamLedger lets you track three types of transactions: **Expenses, Incomes, and Transfers**.
+                </p>
+
+                <h3>1. Expenses and Incomes</h3>
+                <p>
+                    From the main Dashboard, tap the <strong>"+"</strong> button and fill in the fields:
+                </p>
+                <ul>
+                    <li><strong>Amount</strong>: The sum spent or received.</li>
+                    <li><strong>Description</strong>: A short label (e.g., "Supermarket").</li>
+                    <li><strong>Account</strong>: The account to be debited or credited.</li>
+                    <li><strong>Category</strong>: Select or create a category (e.g., Food, Car, Salary) to catalog your budget.</li>
+                </ul>
+
+                <h3>2. Internal Transfers (Giroconto)</h3>
+                <p>
+                    If you transfer money between your own accounts (for example, withdrawing $100 from an ATM to put in your Cash pocket):
+                    toggle the **Transfer (Giroconto)** switch at the top of the form. You will be asked for the **Source Account** (where money comes out) and the **Destination Account** (where money goes in).
+                </p>
+
+                <div class="screenshot-placeholder">
+                    <span class="screenshot-icon">📸</span>
+                    <span class="screenshot-title">SCHERMO_AGGIUNGI_MOVIMENTO</span>
+                    <span class="screenshot-desc">Capture the Add Transaction form with a standard expense filled in, and one with Transfer active.</span>
+                </div>
+
+                <h3>3. Recurring Transactions (Bills, Rent, Subscriptions)</h3>
+                <p>
+                    If you have fixed monthly costs (e.g., Netflix, Rent, Salary):
+                </p>
+                <ol>
+                    <li>Go to <strong>Settings > Recurring Transactions</strong>.</li>
+                    <li>Tap <strong>"+"</strong> and set the cycle interval (e.g., Every 1 Month, Every 1 Year).</li>
+                    <li>The app will automatically generate the transaction at the due date, without you having to lift a finger!</li>
+                </ol>
+            </section>
+
+            <!-- CHAPTER 4 -->
+            <section id="cap4">
+                <h2>📈 Chapter 4: Investments (Markets & Savings) <span style="font-size: 14px; background: var(--accent-amber); color: #000; padding: 4px 10px; border-radius: 20px; font-weight: 700; margin-left: 10px; vertical-align: middle;">BETA</span></h2>
+                
+                <div class="warning-box">
+                    <div class="warning-box-title">BETA Version Note</div>
+                    The **Investments** module is currently released in a experimental **Beta** version. We are actively refining online quotation synchronizations and fixed-yield interest calculations. If you notice any discrepancy, please feel free to report it!
+                </div>
+
+                <p>
+                    FamLedger includes a powerful **Investments** section designed both for stock market investors and for those who prefer steady, fixed-yield savings instruments.
+                </p>
+
+                <h3>Markets (Variable Portfolio)</h3>
+                <p>
+                    Use this section for ETFs, Stocks, or Cryptocurrencies. 
+                    The app features an online ticker search. Just enter the official **Ticker** symbol (e.g., <em>AAPL</em> or <em>SWDA.MI</em>) and activate the automatic search. The app will fetch the live price and compute your profit or loss based on your **Average Load Price (PMC)** and **Quantity**.
+                </p>
+
+                <h3>Savings (Fixed Yield)</h3>
+                <p>
+                    Use this section for **Certificate of Deposit (CD)**, government bonds, or savings bonds.
+                    No ticker is required here: simply set the **Deposited Capital**, the **Annual Interest Rate (%)**, the **Tax Rate** (e.g., 26% or 12.5% for government bonds), and the **Start Date**. The app will calculate the interests accumulated day by day in real-time!
+                </p>
+
+                <div class="screenshot-placeholder">
+                    <span class="screenshot-icon">📸</span>
+                    <span class="screenshot-title">SCHERMO_NUOVO_INVESTIMENTO</span>
+                    <span class="screenshot-desc">Capture the new AddAssetBottomSheet open, showing the "Markets" tab with Ticker search, and the "Savings" tab with Interest and Tax fields.</span>
+                </div>
+            </section>
+
+            <!-- CHAPTER 5 -->
+            <section id="cap5">
+                <h2>👥 Chapter 5: Shared Expenses (Co-debtors & Settle)</h2>
+                <p>
+                    One of the most robust features of FamLedger is handling shared bills (perfect for couples, families, or roommates) to instantly answer: **"Who owes how much to whom?"**.
+                </p>
+
+                <h3>1. Add Participants</h3>
+                <p>
+                    Go to <strong>Settings > Participants</strong> and add your family members' names (e.g., <em>Mark</em>, <em>Julia</em>).
+                </p>
+
+                <h3>2. Record a Shared Bill</h3>
+                <p>
+                    When entering a expense (e.g., a $100 grocery bill paid entirely by you):
+                </p>
+                <ol>
+                    <li>In the transaction form, scroll down to **Co-debtors**.</li>
+                    <li>Select the participants involved (e.g., Mark and Julia).</li>
+                    <li>Choose to split **equally** or assign **custom shares** (e.g., $50 to Mark, $50 to Julia).</li>
+                    <li>Save the expense. The app records that you advanced $100, and Mark and Julia owe you $50 each.</li>
+                </ol>
+
+                <div class="screenshot-placeholder">
+                    <span class="screenshot-icon">📸</span>
+                    <span class="screenshot-title">SCHERMO_CO_DEBITORI_FORM</span>
+                    <span class="screenshot-desc">Capture the "Co-debtors" section inside the New Transaction form with selected member chips.</span>
+                </div>
+
+                <h3>3. Quick Settle (Single or Group)</h3>
+                <p>
+                    In the main menu, the <strong>Debts</strong> section gives you a real-time summary.
+                    To settle debts, you have two options:
+                </p>
+                <ul>
+                    <li><strong>Settle Single Person</strong>: Tap a debtor's name, choose which account receives the reimbursement, and tap Settle. The app automatically creates a reimbursement transaction, clearing the debt.</li>
+                    <li><strong>Settle as a Group (Batch Settle!)</strong>: If multiple people repay you at once (e.g., at the end of the month), you can select multiple debtors using handy checkboxes and clear all their debts with a single tap.</li>
+                </ul>
+
+                <div class="screenshot-placeholder">
+                    <span class="screenshot-icon">📸</span>
+                    <span class="screenshot-title">SCHERMO_CRUSCOTTO_DEBITI</span>
+                    <span class="screenshot-desc">Capture the debts dashboard showing outstanding balances and the active batch settlement dialog.</span>
+                </div>
+            </section>
+
+            <!-- CHAPTER 6 -->
+            <section id="cap6">
+                <h2>🎯 Chapter 6: Financial Goals (Free)</h2>
+                <p>
+                    **Financial Goals** (Targets) let you plan and track your savings for tangible future projects, like buying a new laptop, a vacation, or building an emergency fund.
+                </p>
+
+                <h3>Create and Track a Goal</h3>
+                <ol>
+                    <li>Navigate to the <strong>Goals</strong> screen from the main menu.</li>
+                    <li>Tap the <strong>"+"</strong> button at the bottom right.</li>
+                    <li>Enter the **Goal Title** (e.g., <em>New Laptop</em>).</li>
+                    <li>Set the **Target Sum** you wish to accumulate (e.g., <em>$1,200</em>).</li>
+                    <li>Select a **Target Due Date** to complete your saving goal.</li>
+                    <li>Link a **Linked Account** where you stash this specific money.</li>
+                </ol>
+                <p>
+                    The application automatically tracks your progress, displaying a **visual percentage bar (%)** and computing the exact monthly saving quota needed from today to the due date to hit your goal stress-free!
+                </p>
+
+                <div class="screenshot-placeholder">
+                    <span class="screenshot-icon">📸</span>
+                    <span class="screenshot-title">SCHERMO_OBIETTIVI</span>
+                    <span class="screenshot-desc">Capture the Goals screen displaying active savings goals and their colorful progress bars.</span>
+                </div>
+            </section>
+
+            <!-- CHAPTER 7 -->
+            <section id="cap7">
+                <h2>🏆 Chapter 7: Gamification and Achievements (Free)</h2>
+                <p>
+                    FamLedger makes personal budget tracking stimulating and fun through an innovative **Gamification** and **Achievements** system.
+                </p>
+
+                <h3>Unlock Financial Medals</h3>
+                <p>
+                    Financial education meets game design! As you build healthy financial habits in the app, you will automatically unlock milestones and earn virtual medals:
+                </p>
+                <ul>
+                    <li><strong>Novice Saver</strong>: Unlocked after successfully finishing your first month with a positive net balance.</li>
+                    <li><strong>Transfer Master</strong>: Unlocked by executing multiple internal transfers between accounts to optimize liquidity.</li>
+                    <li><strong>Wise Investor</strong>: Unlocked by entering your very first asset in the investments section.</li>
+                    <li><strong>Serial Tracker</strong>: Unlocked after logging transactions for 15 consecutive days.</li>
+                </ul>
+
+                <p>
+                    You can view your showcase of achievements at any time by tapping **Achievements** in the main menu. It is an educational and visual way to keep yourself and your family motivated!
+                </p>
+
+                <div class="screenshot-placeholder">
+                    <span class="screenshot-icon">📸</span>
+                    <span class="screenshot-title">SCHERMO_TRAGUARDI</span>
+                    <span class="screenshot-desc">Capture the beautiful Achievements screen, showing colored medals unlocked and greyed-out ones still to achieve.</span>
+                </div>
+            </section>
+
+            <!-- CHAPTER 8 -->
+            <section id="cap8">
+                <h2>🔍 Chapter 8: Anomaly Detection (Free Feature)</h2>
+                <p>
+                    The **Anomaly Detection** tool scans your database continuously for potential mistakes or human typing errors to help keep your data perfectly clean.
+                </p>
+
+                <h3>What anomalies are tracked?</h3>
+                <ul>
+                    <li><strong>Duplicate Expenses</strong>: Warns you instantly if you recorded the exact same amount for the same merchant on the same day. Prevents counting a supermarket bill or subscription twice!</li>
+                    <li><strong>Unusual Expenses</strong>: Automatically flags unusual spending spikes compared to your rolling monthly average in that specific category.</li>
+                </ul>
+
+                <div class="screenshot-placeholder">
+                    <span class="screenshot-icon">📸</span>
+                    <span class="screenshot-title">SCHERMO_ANOMALIE_FREE</span>
+                    <span class="screenshot-desc">Capture the Anomaly Analysis screen showing a list of active alerts.</span>
+                </div>
+            </section>
+
+            <!-- CHAPTER 9 -->
+            <section id="cap9">
+                <h2>⚙️ Chapter 9: App Settings (Free)</h2>
+                <p>
+                    The **Settings** screen is the control hub where you can fully customize the behavior of FamLedger to fit your life perfectly.
+                </p>
+
+                <div class="screenshot-placeholder">
+                    <span class="screenshot-icon">📸</span>
+                    <span class="screenshot-title">SCHERMO_IMPOSTAZIONI</span>
+                    <span class="screenshot-desc">Capture the overall Settings screen showing all configured modules.</span>
+                </div>
+
+                <!-- 9.1 CATEGORIES -->
+                <div id="cap9-1">
+                    <h4>🏷️ 9.1 Custom Categories Management</h4>
+                    <p>
+                        In FamLedger, you are completely free to build the transaction categories that fit your real life. The app does not lock you into rigid templates!
+                    </p>
+                    <p>
+                        <strong>Create a Category</strong>:
+                    </p>
+                    <ol>
+                        <li>In <strong>Settings > Categories</strong>, tap the <strong>"+"</strong> button.</li>
+                        <li>Type the **Category Name** (e.g., <em>Restaurants</em>, <em>Gym</em>, <em>Rent</em>).</li>
+                        <li>Pick a **Color** (which will be used harmoniously in the Dashboard).</li>
+                        <li>Select a **Theme Icon** for quick visual scanning of movements.</li>
+                    </ol>
+                    <p>
+                        You can edit or delete categories at any time. All existing transactions associated with them will update automatically!
+                    </p>
+
+                    <div class="screenshot-placeholder">
+                        <span class="screenshot-icon">📸</span>
+                        <span class="screenshot-title">SCHERMO_CATEGORIE_LISTA</span>
+                        <span class="screenshot-desc">Capture the category management list and the pop-up modal for creating/editing a category.</span>
+                    </div>
+                </div>
+
+                <!-- 9.2 RECURRING ITEMS -->
+                <div id="cap9-2" style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
+                    <h4>🔄 9.2 Recurring Transactions & Automations</h4>
+                    <p>
+                        Don't log the same bills by hand every month! For recurring bills, streaming subscriptions (Netflix, Spotify), rent, or salary, set an automatic rule:
+                    </p>
+                    <ol>
+                        <li>In <strong>Settings > Recurring Transactions</strong>, tap the <strong>"+"</strong> button.</li>
+                        <li>Fill in the details (amount, description, account, and category).</li>
+                        <li>Set the **Frequency** (e.g., every 1 Month, every 1 Year, every 2 Weeks).</li>
+                        <li>At the due date, FamLedger will automatically inject the transaction and send you a notification.</li>
+                    </ol>
+
+                    <div class="screenshot-placeholder">
+                        <span class="screenshot-icon">📸</span>
+                        <span class="screenshot-title">SCHERMO_RICORRENTI_LISTA</span>
+                        <span class="screenshot-desc">Capture the screen showing configured active recurring payments rules.</span>
+                    </div>
+                </div>
+
+                <!-- 9.3 SECURITY & PRIVACY -->
+                <div id="cap9-3" style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
+                    <h4>🔒 9.3 Security & Privacy (Password & Obfuscation)</h4>
+                    <p>
+                        FamLedger offers two advanced tiers to protect your sensitive financial data when using the app in public:
+                    </p>
+                    <ul>
+                        <li><strong>🔒 Lock Password (Offline)</strong>: Toggle it on to secure the start of the app with a local password or PIN. Features hint recovery after 3 wrong attempts.</li>
+                        <li><strong>🕶️ Obfuscate Amounts Mode</strong>: Toggling this option instantly hides all balance figures on the Dashboard and accounts screens under placeholders (e.g., <em>•••.•• $</em>). Simply tap them to temporarily reveal, making it perfect for public transit or in crowded environments!</li>
+                    </ul>
+
+                    <div class="screenshot-placeholder">
+                        <span class="screenshot-icon">📸</span>
+                        <span class="screenshot-title">SCHERMO_OFFUSCAMENTO_ACTIVE</span>
+                        <span class="screenshot-desc">Capture the main Dashboard screen with "Obfuscate Amounts" active to showcase how balances are blurred.</span>
+                    </div>
+                </div>
+
+                <!-- 9.4 PROFILE & LOCAL PREFERENCES -->
+                <div style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
+                    <h4>💱 9.4 Profile, Participants, and Local Settings</h4>
+                    <ul>
+                        <li><strong>Edit Profile</strong>: Change your main name at any time.</li>
+                        <li><strong>Manage Participants</strong>: Add, modify, or disable shared family members/roommates.</li>
+                        <li><strong>Language & Currency</strong>: Select your preferred currency and localized app translation on the fly from the 6 available languages (English, Italian, Spanish, French, German, Portuguese).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CHAPTER 10 -->
+            <section id="cap10">
+                <h2>👑 Chapter 10: FamLedger PRO (Exclusive Features)</h2>
+                <p>
+                    For users who want to deep-dive into their financial health and guarantee the long-term safety of their historical records, we built **FamLedger PRO**. 
+                    A single *One-Time purchase* (buy once on the store, keep it forever) that unlocks the full potential of the application and **directly supports the hard work and dedication of our small independent team**. Your purchase enables us to keep improving FamLedger, keeping it secure, 100% offline, free of trackers, and fully dedicated to your privacy!
+                </p>
+
+                <div class="screenshot-placeholder">
+                    <span class="screenshot-icon">📸</span>
+                    <span class="screenshot-title">SCHERMO_UPGRADE_PRO</span>
+                    <span class="screenshot-desc">Capture the premium presentation and store purchase overlay for the PRO version (ProFeatureOverlay).</span>
+                </div>
+
+                <!-- 10.1 STATISTICS -->
+                <div id="cap10-1">
+                    <h4>📊 10.1 Net Worth Charts & Statistics</h4>
+                    <p>
+                        Understanding the overall evolution of your wealth over time is key to making wise financial decisions.
+                    </p>
+
+                    <div class="pro-box">
+                        <div class="pro-box-title">PRO Exclusive Section</div>
+                        The entire **Statistics** dashboard and detailed Net Worth charts are locked behind the **PRO** upgrade.
+                    </div>
+
+                    <p>
+                        Activating the PRO version unlocks a beautiful line chart tracing your **Net Worth** history. This figure aggregates the balances of all your accounts and the live updated valuations of all your market and fixed-rate investments.
+                    </p>
+
+                    <div class="screenshot-placeholder">
+                        <span class="screenshot-icon">📸</span>
+                        <span class="screenshot-title">SCHERMO_STATISTICHE</span>
+                        <span class="screenshot-desc">Capture the Net Worth history line chart and asset distribution breakdown in the PRO Statistics dashboard.</span>
+                    </div>
+                </div>
+
+                <!-- 10.2 BACKUP & IMPORT -->
+                <div id="cap10-2" style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
+                    <h4>💾 10.2 Backup, Restore & Data Migration (JSON/CSV)</h4>
+                    <p>
+                        Since FamLedger is 100% offline, **making backups is crucial**. If you change phones or reset your device, you will need this file to avoid losing your historical data.
+                    </p>
+
+                    <div class="pro-box">
+                        <div class="pro-box-title">PRO Exclusive Section</div>
+                        Accessing the Backup Hub for complete database imports/exports via JSON or CSV is part of **FamLedger PRO** to guarantee professional-grade data ownership.
+                    </div>
+
+                    <p>
+                        <strong>JSON Export</strong>: Creates a fully encrypted file of your accounts, transactions, shared co-debtors, and investments, ready to be sent to Google Drive, email, or your local computer.
+                    </p>
+                    <p>
+                        <strong>CSV Export</strong>: Lets you export your entire transaction history in a spreadsheets-ready format (compatible with Excel or Google Sheets) for custom analysis on your computer.
+                    </p>
+
+                    <div class="screenshot-placeholder">
+                        <span class="screenshot-icon">📸</span>
+                        <span class="screenshot-title">SCHERMO_BACKUP_HUB</span>
+                        <span class="screenshot-desc">Capture the Backup Hub screen with JSON/CSV export and import options clearly visible.</span>
+                    </div>
+                </div>
+
+                <!-- 10.3 100% AD-FREE EXPERIENCE -->
+                <div style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
+                    <h4>🚫 10.3 100% Ad-Free Experience</h4>
+                    <p>
+                        Upgrading to the PRO version instantly **removes all advertisement banners** from all operational screens of the app (Dashboard, Transactions, Investments, Anomalies, Goals, Achievements), giving you a pristine, distraction-free analysis workspace.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // Simple script to highlight current chapter in sidebar during scroll
+        const sections = document.querySelectorAll('section, main > section > div[id]');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 180)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.querySelector('a').getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
