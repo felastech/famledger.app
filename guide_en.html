@@ -177,7 +177,7 @@
             font-weight: 300;
         }
 
-        /* SECTIONS & CHAPTERS */
+        /* SECTIONS AND CHAPTERS */
         section {
             padding-top: 40px;
             margin-bottom: 60px;
@@ -240,48 +240,26 @@
             color: #fff;
         }
 
-        /* SCREENSHOT PLACEHOLDERS */
-        .screenshot-placeholder {
-            background: rgba(0, 242, 254, 0.03);
-            border: 2px dashed rgba(0, 242, 254, 0.4);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
+        /* SCREENSHOT IMAGES CONTAINER */
+        .screenshot-container {
             text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            margin: 30px 0;
         }
 
-        .screenshot-placeholder:hover {
-            background: rgba(0, 242, 254, 0.06);
-            border-color: var(--primary);
+        .screenshot-container img {
+            max-width: 320px;
+            width: 100%;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
         }
 
-        .screenshot-icon {
-            font-size: 32px;
-            margin-bottom: 12px;
-            display: block;
+        .screenshot-container img:hover {
+            transform: scale(1.02);
         }
 
-        .screenshot-title {
-            color: var(--primary);
-            font-size: 15px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .screenshot-desc {
-            font-size: 13px;
-            color: var(--text-muted);
-            max-width: 500px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
-
-        /* INFO & WARNING BOXES */
+        /* INFO, WARNING, AND PRO BOXES */
         .info-box {
             background: rgba(16, 185, 129, 0.05);
             border-left: 4px solid var(--accent-green);
@@ -417,7 +395,7 @@
                 <li class="nav-item"><a href="#cap8">🔍 8. Anomaly Detection</a></li>
                 <li class="nav-item"><a href="#cap9">⚙️ 9. App Settings</a></li>
                 <li class="nav-item nav-sub-item"><a href="#cap9-1">🏷️ 9.1 Categories</a></li>
-                <li class="nav-item nav-sub-item"><a href="#cap9-2">🔄 9.2 Recurring Items</a></li>
+                <li class="nav-item nav-sub-item"><a href="#cap9-2">🔄 9.2 Recurring Transactions</a></li>
                 <li class="nav-item nav-sub-item"><a href="#cap9-3">🔒 9.3 Security & Privacy</a></li>
                 <li class="nav-item"><a href="#cap10">👑 10. PRO Features</a></li>
                 <li class="nav-item nav-sub-item"><a href="#cap10-1">📊 10.1 Statistics</a></li>
@@ -429,72 +407,67 @@
         <main>
             <a href="index.html" class="back-home">← Back to Home Page</a>
             
-            <h1 class="main-title">FamLedger Official Guide</h1>
+            <h1 class="main-title">FamLedger Complete Guide</h1>
             <p class="intro-text">
-                Welcome to the official <strong>FamLedger</strong> documentation. This step-by-step guide is designed 
-                with absolute simplicity to help you configure and make the absolute most of every single feature in the app.
+                Welcome to the official documentation of <strong>FamLedger</strong>. This guide is structured step-by-step 
+                to explain with absolute simplicity how to configure and make the most of every single feature in the app.
             </p>
 
             <!-- CHAPTER 1 -->
             <section id="cap1">
-                <h2>👋 Chapter 1: Welcome and Setup</h2>
+                <h2>👋 Chapter 1: Welcome and First Launch</h2>
                 <p>
-                    FamLedger is built with a strict philosophy: **no central servers, no registration, and 100% offline**. 
-                    All data you input stays completely locked inside your smartphone's local memory.
+                    FamLedger is designed with a strict philosophy: "no central servers, no registration, and 100% offline". 
+                    All data you input remains locked inside your smartphone's local memory.
                 </p>
 
-                <h3>Welcome Screen</h3>
+                <h3>The Welcome Screen</h3>
                 <p>
-                    Upon launching the app for the very first time, you will simply be asked to enter **your Name** (e.g., <em>Antonio</em>) to initialize the main user profile. No email address, password, or registration is required: you are instantly ready to use the app!
+                    Upon first launching the application, you will simply be asked to enter "your Name" (e.g. <em>Antonio</em>) to configure the main user. No email address, password, or registration is required: you are instantly ready to use the app!
                 </p>
 
-                <div class="screenshot-placeholder">
-                    <span class="screenshot-icon">📸</span>
-                    <span class="screenshot-title">SCHERMO_PRIMO_AVVIO_NOME</span>
-                    <span class="screenshot-desc">Capture the initial screen where the app greets you and asks to type your name to begin.</span>
+                <div class="screenshot-container">
+                    <img src="welcomepage_en.jpeg" alt="Welcome Screen">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The initial welcome screen to enter your name</p>
                 </div>
 
-                <h3>Set a Security Password (Optional)</h3>
+                <h3>Setting a Security Password (Optional)</h3>
                 <p>
-                    If you wish to secure the application against prying eyes when lending your phone to family or friends, you can enable a **Lock Password**:
+                    If you wish to protect the application from prying eyes, you can enable an "Access Password":
                 </p>
                 <ol>
-                    <li>Go to <strong>Settings</strong> (the gear icon in the bottom menu bar).</li>
-                    <li>Scroll down to **Security Password** and toggle it on.</li>
-                    <li>Choose a strong password and enter a clear **Password Hint** (e.g., "My dog's name").</li>
+                    <li>Go to <strong>Settings</strong> (the gear icon in the bottom menu).</li>
+                    <li>Scroll down to the "Security" section and expand the menu to create a password.</li>
+                    <li>Choose a strong password and enter a very clear "Password Hint" (e.g. "My dog's name").</li>
                 </ol>
                 <p>
-                    Once enabled, the application will ask for your password every time it opens. The hint will only be shown after 3 consecutive wrong attempts.
+                    Once activated, the application will ask for your password on every launch. The hint will be shown immediately starting from the first wrong attempt to help you recall your key.
                 </p>
 
                 <div class="warning-box">
-                    <div class="warning-box-title">Important Security Note!</div>
-                    Since FamLedger does not store anything online, if you set a password and forget it, **no one can recover your data for you**. Always make sure to use a clear hint that only you understand!
+                    <div class="warning-box-title">Watch Out for Security!</div>
+                    Since FamLedger does not store anything online, if you set a password and forget it, "no one can recover your data for you". Remember to always use a hint that only you understand to recover the unlock key!
                 </div>
             </section>
 
             <!-- CHAPTER 2 -->
             <section id="cap2">
-                <h2>🏦 Chapter 2: Account Management (Your Foundation)</h2>
+                <h2>🏦 Chapter 2: Account Management</h2>
                 <p>
-                    Before recording any expense, you must define **where your money is**. In FamLedger, every expense or income must be linked to a specific account.
+                    Before entering any transaction, you need to define "where your money is". In FamLedger, every expense or income must be associated with a specific account.
                 </p>
 
-                <h3>Create a New Account</h3>
+                <h3>Creating a New Account</h3>
                 <ol>
-                    <li>Go to the <strong>Accounts</strong> screen from the bottom menu.</li>
-                    <li>Tap the round <strong>"+"</strong> button at the bottom right.</li>
-                    <li>Enter the <strong>Account Name</strong> (e.g., <em>Bank Account</em>, <em>Cash</em>, <em>Revolut Card</em>).</li>
-                    <li>Choose the **Currency** (EUR, USD, etc.).</li>
-                    <li>Set the <strong>Initial Balance</strong> (how much money is currently in this account).</li>
-                    <li>Pick a **Custom Color** to easily recognize it in charts.</li>
-                    <li>Tap <strong>Save</strong>.</li>
+                    <li>Go to the <strong>Settings and then Manage Accounts</strong> section from the bottom menu.</li>
+                    <li>Enter the <strong>Account Name</strong> (e.g. <em>Checking Account</em>, <em>Cash</em>).</li>
+                    <li>Choose the owner.</li>
+                    <li>Press <strong>Save</strong>.</li>
                 </ol>
-
-                <div class="screenshot-placeholder">
-                    <span class="screenshot-icon">📸</span>
-                    <span class="screenshot-title">SCHERMO_AGGIUNGI_CONTO</span>
-                    <span class="screenshot-desc">Capture the account creation form populated with an example (e.g., "Bank Account", Balance $1,500).</span>
+                
+                <div class="screenshot-container">
+                    <img src="addconti_en.jpeg" alt="Create Account Screen">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The account creation screen</p>
                 </div>
             </section>
 
@@ -502,7 +475,7 @@
             <section id="cap3">
                 <h2>💸 Chapter 3: Movements and Transactions</h2>
                 <p>
-                    Recording daily expenses takes only a few seconds. FamLedger lets you track three types of transactions: **Expenses, Incomes, and Transfers**.
+                    Recording daily expenses takes just a few seconds. FamLedger allows you to track three types of movements: "Expenses, Incomes, and Internal Transfers".
                 </p>
 
                 <h3>1. Expenses and Incomes</h3>
@@ -510,64 +483,73 @@
                     From the main Dashboard, tap the <strong>"+"</strong> button and fill in the fields:
                 </p>
                 <ul>
-                    <li><strong>Amount</strong>: The sum spent or received.</li>
-                    <li><strong>Description</strong>: A short label (e.g., "Supermarket").</li>
-                    <li><strong>Account</strong>: The account to be debited or credited.</li>
-                    <li><strong>Category</strong>: Select or create a category (e.g., Food, Car, Salary) to catalog your budget.</li>
+                    <li><strong>Amount</strong>: The amount spent or received.</li>
+                    <li><strong>Description</strong>: A brief label (e.g. "Grocery").</li>
+                    <li><strong>Account</strong>: Which account should be debited or credited.</li>
+                    <li><strong>Category</strong>: Select or create a category (e.g. Food, Auto, Salary) to categorize the balance sheet.</li>
+                    <li><strong>Shared expense</strong>: Define if an expense is to be split with someone.</li>
                 </ul>
-
-                <h3>2. Internal Transfers (Giroconto)</h3>
-                <p>
-                    If you transfer money between your own accounts (for example, withdrawing $100 from an ATM to put in your Cash pocket):
-                    toggle the **Transfer (Giroconto)** switch at the top of the form. You will be asked for the **Source Account** (where money comes out) and the **Destination Account** (where money goes in).
-                </p>
-
-                <div class="screenshot-placeholder">
-                    <span class="screenshot-icon">📸</span>
-                    <span class="screenshot-title">SCHERMO_AGGIUNGI_MOVIMENTO</span>
-                    <span class="screenshot-desc">Capture the Add Transaction form with a standard expense filled in, and one with Transfer active.</span>
+                
+                <div class="info-box">
+                    <div class="info-box-title">Note on Shared Expenses</div>
+                    FamLedger allows you to split expenses flexibly with your partner, family, or roommates. You can set equal or custom shares, managing accounts and settlements in real time. To discover how to configure participants and settle debts, check the dedicated section in <a href="#cap5" style="color: var(--accent-green); font-weight: 600;">Chapter 5: Shared Expenses</a>.
+                </div>
+                
+                <div class="screenshot-container">
+                    <img src="uscite_en.jpeg" alt="Add Movement Screen">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The transaction entry screen</p>
                 </div>
 
-                <h3>3. Recurring Transactions (Bills, Rent, Subscriptions)</h3>
+                <h3>2. Internal Transfers (Giroconti)</h3>
                 <p>
-                    If you have fixed monthly costs (e.g., Netflix, Rent, Salary):
+                    If you move money from one account to another (for example, withdrawing €100 from the ATM to put it in your Cash wallet):
+                    activate the <strong>Internal Transfer (Giroconto)</strong> toggle at the top of the screen. You will be asked for the "Source Account" (where the money comes from) and the "Destination Account" (where it goes).
+                </p>
+
+                <div class="screenshot-container">
+                    <img src="giroconti_en.jpeg" alt="Add Transfer Screen">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The internal transfer entry screen</p>
+                </div>
+
+                <h3>3. Recurring Transactions (Bills, Salaries, Subscriptions)</h3>
+                <p>
+                    If you have fixed monthly expenses (e.g. Rent):
                 </p>
                 <ol>
                     <li>Go to <strong>Settings > Recurring Transactions</strong>.</li>
-                    <li>Tap <strong>"+"</strong> and set the cycle interval (e.g., Every 1 Month, Every 1 Year).</li>
-                    <li>The app will automatically generate the transaction at the due date, without you having to lift a finger!</li>
+                    <li>Press <strong>"+"</strong> and set the recurrence interval (e.g. Every 1 Month, Every 1 Year).</li>
+                    <li>The app will automatically generate the transaction, without you having to do anything!</li>
                 </ol>
             </section>
 
             <!-- CHAPTER 4 -->
             <section id="cap4">
-                <h2>📈 Chapter 4: Investments (Markets & Savings) <span style="font-size: 14px; background: var(--accent-amber); color: #000; padding: 4px 10px; border-radius: 20px; font-weight: 700; margin-left: 10px; vertical-align: middle;">BETA</span></h2>
+                <h2>📈 Chapter 4: Investments (Markets and Savings) <span style="font-size: 14px; background: var(--accent-amber); color: #000; padding: 4px 10px; border-radius: 20px; font-weight: 700; margin-left: 10px; vertical-align: middle;">BETA</span></h2>
                 
                 <div class="warning-box">
-                    <div class="warning-box-title">BETA Version Note</div>
-                    The **Investments** module is currently released in a experimental **Beta** version. We are actively refining online quotation synchronizations and fixed-yield interest calculations. If you notice any discrepancy, please feel free to report it!
+                    <div class="warning-box-title">Experimental BETA Note</div>
+                    The "Investments" section is currently released in an experimental "Beta" version. We are actively refining the integration of online quotes and the calculations of interest accrual. If you notice any discrepancies or unexpected behavior, please let us know!
                 </div>
 
                 <p>
-                    FamLedger includes a powerful **Investments** section designed both for stock market investors and for those who prefer steady, fixed-yield savings instruments.
+                    FamLedger includes a powerful "Investments" section designed both for stock market investors and for those who prefer safe, fixed-yield instruments.
                 </p>
 
-                <h3>Markets (Variable Portfolio)</h3>
+                <h3>Markets (Variable)</h3>
                 <p>
                     Use this section for ETFs, Stocks, or Cryptocurrencies. 
-                    The app features an online ticker search. Just enter the official **Ticker** symbol (e.g., <em>AAPL</em> or <em>SWDA.MI</em>) and activate the automatic search. The app will fetch the live price and compute your profit or loss based on your **Average Load Price (PMC)** and **Quantity**.
+                    The app is equipped with an automatic online quote retriever. Simply enter the official "Ticker" (e.g. <em>SWDA.MI</em> or <em>AAPL</em>) and trigger the automatic search. The app will download the updated price and calculate your profit or loss based on your "Average Load Price (PMC)" and the "Quantity" entered.
                 </p>
 
                 <h3>Savings (Fixed Yield)</h3>
                 <p>
-                    Use this section for **Certificate of Deposit (CD)**, government bonds, or savings bonds.
-                    No ticker is required here: simply set the **Deposited Capital**, the **Annual Interest Rate (%)**, the **Tax Rate** (e.g., 26% or 12.5% for government bonds), and the **Start Date**. The app will calculate the interests accumulated day by day in real-time!
+                    Use this section for "Certificate of Deposits", government bonds, or saving bonds.
+                    No ticker is needed here: simply set the "Deposited Capital", the "Annual Interest Rate (%)", the "Tax Rate" (e.g. 26% or 12.5% for government bonds), and the "Start Date". The app will calculate the interest accrued day-by-day in real time!
                 </p>
 
-                <div class="screenshot-placeholder">
-                    <span class="screenshot-icon">📸</span>
-                    <span class="screenshot-title">SCHERMO_NUOVO_INVESTIMENTO</span>
-                    <span class="screenshot-desc">Capture the new AddAssetBottomSheet open, showing the "Markets" tab with Ticker search, and the "Savings" tab with Interest and Tax fields.</span>
+                <div class="screenshot-container">
+                    <img src="investimenti_en.jpeg" alt="Investments Screen">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The investments dashboard screen</p>
                 </div>
             </section>
 
@@ -575,208 +557,244 @@
             <section id="cap5">
                 <h2>👥 Chapter 5: Shared Expenses (Co-debtors & Settle)</h2>
                 <p>
-                    One of the most robust features of FamLedger is handling shared bills (perfect for couples, families, or roommates) to instantly answer: **"Who owes how much to whom?"**.
+                    One of the most robust features of FamLedger is handling shared bills (perfect for couples, families, or roommates) to instantly answer: "Who owes how much to whom?".
                 </p>
 
                 <h3>1. Add Participants</h3>
                 <p>
-                    Go to <strong>Settings > Participants</strong> and add your family members' names (e.g., <em>Mark</em>, <em>Julia</em>).
+                    Go to <strong>Settings > Participants</strong> and add your family members' names (e.g. <em>Marco</em>, <em>Giulia</em>).
                 </p>
 
                 <h3>2. Record a Shared Bill</h3>
                 <p>
-                    When entering a expense (e.g., a $100 grocery bill paid entirely by you):
+                    When entering an expense (e.g. grocery bill of €150 paid entirely by you):
                 </p>
                 <ol>
-                    <li>In the transaction form, scroll down to **Co-debtors**.</li>
-                    <li>Select the participants involved (e.g., Mark and Julia).</li>
-                    <li>Choose to split **equally** or assign **custom shares** (e.g., $50 to Mark, $50 to Julia).</li>
-                    <li>Save the expense. The app records that you advanced $100, and Mark and Julia owe you $50 each.</li>
+                    <li>In the transaction form, scroll down to the <strong>Shared expense</strong> section.</li>
+                    <li>Select the participants involved (e.g. Giulia).</li>
+                    <li>Choose to split <strong>equally</strong> or assign <strong>custom shares</strong> (e.g. €75 to Giulia).</li>
+                    <li>Save the expense. The app will record that you advanced €150 and Giulia owes you €75.</li>
                 </ol>
-
-                <div class="screenshot-placeholder">
-                    <span class="screenshot-icon">📸</span>
-                    <span class="screenshot-title">SCHERMO_CO_DEBITORI_FORM</span>
-                    <span class="screenshot-desc">Capture the "Co-debtors" section inside the New Transaction form with selected member chips.</span>
+                
+                <div class="screenshot-container">
+                    <img src="spesaCondivisa_en.jpeg" alt="Shared Expense Screen">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The shared expense section in the form</p>
                 </div>
 
                 <h3>3. Quick Settle (Single or Group)</h3>
                 <p>
-                    In the main menu, the <strong>Debts</strong> section gives you a real-time summary.
+                    From the main page, the <strong>Debts Situation</strong> dashboard will show a real-time summary.
                     To settle debts, you have two options:
                 </p>
                 <ul>
-                    <li><strong>Settle Single Person</strong>: Tap a debtor's name, choose which account receives the reimbursement, and tap Settle. The app automatically creates a reimbursement transaction, clearing the debt.</li>
-                    <li><strong>Settle as a Group (Batch Settle!)</strong>: If multiple people repay you at once (e.g., at the end of the month), you can select multiple debtors using handy checkboxes and clear all their debts with a single tap.</li>
+                    <li><strong>Settle single transaction</strong>: Go to Movements (bottom menu) and tap "Settle" next to the transaction you want to clear. The app will automatically create a reimbursement transaction, resetting the debt.
+                        <div class="screenshot-container">
+                            <img src="saldoSingolo_en.jpeg" alt="Settle Single Screen">
+                            <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">Settle single movement view</p>
+                        </div>
+                    </li>
+                   
+                    <li><strong>Settle all</strong>: From the home screen, you can click on "Settle all" to repay all outstanding balances at once.</li>
                 </ul>
 
-                <div class="screenshot-placeholder">
-                    <span class="screenshot-icon">📸</span>
-                    <span class="screenshot-title">SCHERMO_CRUSCOTTO_DEBITI</span>
-                    <span class="screenshot-desc">Capture the debts dashboard showing outstanding balances and the active batch settlement dialog.</span>
+                <div class="screenshot-container">
+                    <img src="saldaTutti_en.jpeg" alt="Settle All Screen">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">Settle all debts view</p>
                 </div>
             </section>
 
             <!-- CHAPTER 6 -->
             <section id="cap6">
-                <h2>🎯 Chapter 6: Financial Goals (Free)</h2>
+                <h2>🎯 Chapter 6: Financial Goals</h2>
                 <p>
-                    **Financial Goals** (Targets) let you plan and track your savings for tangible future projects, like buying a new laptop, a vacation, or building an emergency fund.
+                    "Goals" (Target) allow you to plan and track your savings for concrete future projects, like buying a new car, a vacation, or building an emergency fund.
                 </p>
 
                 <h3>Create and Track a Goal</h3>
                 <ol>
-                    <li>Navigate to the <strong>Goals</strong> screen from the main menu.</li>
+                    <li>Navigate to the <strong>Goals</strong> screen from the "More" menu of the app.</li>
                     <li>Tap the <strong>"+"</strong> button at the bottom right.</li>
-                    <li>Enter the **Goal Title** (e.g., <em>New Laptop</em>).</li>
-                    <li>Set the **Target Sum** you wish to accumulate (e.g., <em>$1,200</em>).</li>
-                    <li>Select a **Target Due Date** to complete your saving goal.</li>
-                    <li>Link a **Linked Account** where you stash this specific money.</li>
+                    <li>Enter a Description (e.g. <em>New Car</em>).</li>
+                    <li>Set the "Target" amount you wish to accumulate (e.g. <em>€15,000</em>).</li>
+                    <li>Define a "Due Date" by which you wish to complete the savings.</li>
+                    <li>Associate a "Linked Account" where you gather these savings (optional).</li>
                 </ol>
                 <p>
-                    The application automatically tracks your progress, displaying a **visual percentage bar (%)** and computing the exact monthly saving quota needed from today to the due date to hit your goal stress-free!
+                    The application will monitor progress automatically, displaying a visual progress percentage bar (%).
                 </p>
-
-                <div class="screenshot-placeholder">
-                    <span class="screenshot-icon">📸</span>
-                    <span class="screenshot-title">SCHERMO_OBIETTIVI</span>
-                    <span class="screenshot-desc">Capture the Goals screen displaying active savings goals and their colorful progress bars.</span>
+                
+                <div class="screenshot-container">
+                    <img src="Obiettivi_en.jpeg" alt="Goals Screen">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The savings goals dashboard screen</p>
                 </div>
             </section>
 
             <!-- CHAPTER 7 -->
             <section id="cap7">
-                <h2>🏆 Chapter 7: Gamification and Achievements (Free)</h2>
+                <h2>🏆 Chapter 7: Gamification and Milestones</h2>
                 <p>
-                    FamLedger makes personal budget tracking stimulating and fun through an innovative **Gamification** and **Achievements** system.
+                    FamLedger makes managing personal finance fun and stimulating thanks to an innovative "Gamification" system.
                 </p>
 
-                <h3>Unlock Financial Medals</h3>
+                <h3>Unlocking Financial Medals</h3>
                 <p>
-                    Financial education meets game design! As you build healthy financial habits in the app, you will automatically unlock milestones and earn virtual medals:
+                    Financial education meets game design! As you use the application in a healthy and consistent way, you will automatically unlock milestones and receive virtual medals:
                 </p>
                 <ul>
-                    <li><strong>Novice Saver</strong>: Unlocked after successfully finishing your first month with a positive net balance.</li>
-                    <li><strong>Transfer Master</strong>: Unlocked by executing multiple internal transfers between accounts to optimize liquidity.</li>
-                    <li><strong>Wise Investor</strong>: Unlocked by entering your very first asset in the investments section.</li>
-                    <li><strong>Serial Tracker</strong>: Unlocked after logging transactions for 15 consecutive days.</li>
+                    <li><strong>Budget Sniper</strong>: Awarded if you stay within your monthly spending budget with extreme precision (spending between 90% and 100% of the planned amount).</li>
+                    <li><strong>Quantum Leap</strong>: Unlocked if in a single month your savings surplus (Incomes - Expenses) exceeds 30% of your total monthly income.</li>
+                    <li><strong>Goal Hunter</strong>: Achieved as soon as you successfully complete at least one of your savings goals.</li>
+                    <li><strong>Clean Slate</strong>: Unlocked the moment you settle all active debts with other participants in the shared budget.</li>
+                    <li><strong>Steady Saver</strong>: A reward for your consistency, unlocked by maintaining a positive surplus (income greater than expenses) for 6 consecutive months.</li>
+                    <li><strong>Early Bird</strong>: Awarded if you record at least one movement in the first 5 days of the month for 3 consecutive months.</li>
+                    <li><strong>Mindful Planner</strong>: "One-Time" medal unlocked when you first configure a monthly spending budget.</li>
+                    <li><strong>Debt Extinguished</strong>: A special "One-Time" milestone unlocked when all historical debts registered in the app are definitely settled.</li>
+                    <li><strong>Net Worth Milestones (One-Time)</strong>: Four exclusive gold medals celebrating the growth of your overall net worth (sum of cash accounts and the valuation of investments):
+                        <ul>
+                            <li><strong>Beginning of the Journey</strong>: Reach a net worth of at least 10,000.</li>
+                            <li><strong>Capital Builder</strong>: Reach a net worth of at least 50,000.</li>
+                            <li><strong>Six-Figure Wealth</strong>: Reach a net worth of at least 100,000.</li>
+                            <li><strong>Financial Independence</strong>: Reach the incredible milestone of 250,000 in total net worth.</li>
+                        </ul>
+                    </li>
                 </ul>
 
-                <p>
-                    You can view your showcase of achievements at any time by tapping **Achievements** in the main menu. It is an educational and visual way to keep yourself and your family motivated!
-                </p>
-
-                <div class="screenshot-placeholder">
-                    <span class="screenshot-icon">📸</span>
-                    <span class="screenshot-title">SCHERMO_TRAGUARDI</span>
-                    <span class="screenshot-desc">Capture the beautiful Achievements screen, showing colored medals unlocked and greyed-out ones still to achieve.</span>
+                <div class="screenshot-container">
+                    <img src="traguardi_en.jpeg" alt="Achievements Screen">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The achievements showcase screen</p>
                 </div>
             </section>
 
             <!-- CHAPTER 8 -->
             <section id="cap8">
-                <h2>🔍 Chapter 8: Anomaly Detection (Free Feature)</h2>
+                <h2>🔍 Chapter 8: Spending Anomaly Detection</h2>
                 <p>
-                    The **Anomaly Detection** tool scans your database continuously for potential mistakes or human typing errors to help keep your data perfectly clean.
+                    The <strong>Anomalies</strong> screen acts as an intelligent sentinel for your family budget. Instead of just displaying a list of expenses, the application compares every single expense of the current month in real time with your <strong>historical average spending per transaction</strong> in that specific category (analyzing history up to the previous 24 months).
+                </p>
+                
+                <p>
+                    If a specific transaction exceeds this historical average beyond a certain tolerance percentage, the app will flag it immediately as an anomalous expense.
                 </p>
 
-                <h3>What anomalies are tracked?</h3>
+                <h3>How does the detection algorithm work?</h3>
+                <p>
+                    The app analyzes the registered transactions and processes three different severity levels for the overrun, based on the configurable percentage thresholds in <strong>Settings > Anomaly Thresholds</strong>:
+                </p>
                 <ul>
-                    <li><strong>Duplicate Expenses</strong>: Warns you instantly if you recorded the exact same amount for the same merchant on the same day. Prevents counting a supermarket bill or subscription twice!</li>
-                    <li><strong>Unusual Expenses</strong>: Automatically flags unusual spending spikes compared to your rolling monthly average in that specific category.</li>
+                    <li><strong>🔵 Low Anomaly</strong>: Triggered if the expense exceeds the category's historical average beyond the set minimum threshold (e.g. greater than +20%). Displayed with a blue badge.</li>
+                    <li><strong>🟡 Medium Anomaly</strong>: Triggered if the expense exceeds the historical average beyond the intermediate threshold (e.g. greater than +50%). Highlighted in yellow/orange.</li>
+                    <li><strong>🔴 High Anomaly</strong>: Detected when a single transaction records an exceptional peak exceeding the average beyond the maximum threshold (e.g. greater than +100%). Displayed with a red badge to call your attention immediately.</li>
                 </ul>
 
-                <div class="screenshot-placeholder">
-                    <span class="screenshot-icon">📸</span>
-                    <span class="screenshot-title">SCHERMO_ANOMALIE_FREE</span>
-                    <span class="screenshot-desc">Capture the Anomaly Analysis screen showing a list of active alerts.</span>
+                <p>
+                    Within the Anomalies page, you can use the convenient filters at the top to analyze specific periods (selecting <strong>Year</strong> and <strong>Month</strong>) or to filter the anomalies displayed based on their severity level (<strong>All</strong>, <strong>Low</strong>, <strong>Medium</strong>, <strong>High</strong>).
+                </p>
+
+                <div class="info-box">
+                    <div class="info-box-title">Feature Availability</div>
+                    Anomaly Detection is an <strong>entirely free feature accessible to all users</strong>. If you are using the standard version of the app, an advertisement banner will be shown on this screen, which is removed upon unlocking the PRO version.
+                </div>
+
+                <div class="screenshot-container">
+                    <img src="anomalie_en.jpeg" alt="Anomalies Screen">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The anomaly analysis screen</p>
                 </div>
             </section>
 
             <!-- CHAPTER 9 -->
             <section id="cap9">
-                <h2>⚙️ Chapter 9: App Settings (Free)</h2>
+                <h2>⚙️ Chapter 9: Application Settings</h2>
                 <p>
-                    The **Settings** screen is the control hub where you can fully customize the behavior of FamLedger to fit your life perfectly.
+                    The "Settings" screen is the control center where you can fully customize the behavior of FamLedger. It is a fundamental chapter that includes several advanced tools to tailor your budget.
                 </p>
 
-                <div class="screenshot-placeholder">
-                    <span class="screenshot-icon">📸</span>
-                    <span class="screenshot-title">SCHERMO_IMPOSTAZIONI</span>
-                    <span class="screenshot-desc">Capture the overall Settings screen showing all configured modules.</span>
+                <div class="screenshot-container">
+                    <img src="impostazioni_en.jpeg" alt="Settings Screen">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The settings screen</p>
                 </div>
 
                 <!-- 9.1 CATEGORIES -->
                 <div id="cap9-1">
-                    <h4>🏷️ 9.1 Custom Categories Management</h4>
+                    <h4>🏷️ 9.1 Managing Custom Categories</h4>
                     <p>
-                        In FamLedger, you are completely free to build the transaction categories that fit your real life. The app does not lock you into rigid templates!
+                        In FamLedger you are completely free to create the expense and income categories that best fit your real life. The app does not impose a rigid template!
                     </p>
                     <p>
-                        <strong>Create a Category</strong>:
+                        <strong>Creating a Custom Category</strong>:
                     </p>
                     <ol>
-                        <li>In <strong>Settings > Categories</strong>, tap the <strong>"+"</strong> button.</li>
-                        <li>Type the **Category Name** (e.g., <em>Restaurants</em>, <em>Gym</em>, <em>Rent</em>).</li>
-                        <li>Pick a **Color** (which will be used harmoniously in the Dashboard).</li>
-                        <li>Select a **Theme Icon** for quick visual scanning of movements.</li>
+                        <li>Access the <strong>Categories</strong> section (from the menu <em>More > Settings > Categories</em>).</li>
+                        <li>You will find the convenient creation/modification panel directly at the top of the screen.</li>
+                        <li>Enter the name you wish to give to the category in the <strong>Category Name</strong> field (e.g. <em>Gym</em> or <em>Restaurants</em>).</li>
+                        <li>Choose the category type between <strong>Expenses</strong> or <strong>Incomes</strong> by selecting the corresponding filters. The identifying color (red for expenses and green for incomes) is paired completely automatically and dynamically by the app to maintain color harmony, so you won't need to select it manually.</li>
+                        <li>Tap the circular icon button on the left of the form to open the bottom sheet icon selection panel and choose the <strong>custom icon</strong> you prefer among the many available.</li>
+                        <li>Press the <strong>Add</strong> button (or <strong>Save</strong> if you are editing an existing category) to make the category active immediately.</li>
                     </ol>
                     <p>
-                        You can edit or delete categories at any time. All existing transactions associated with them will update automatically!
+                        You can modify or delete created categories at any time (except for system ones) using the edit (pencil) and delete (trash) icons placed next to each item in the list.
                     </p>
 
-                    <div class="screenshot-placeholder">
-                        <span class="screenshot-icon">📸</span>
-                        <span class="screenshot-title">SCHERMO_CATEGORIE_LISTA</span>
-                        <span class="screenshot-desc">Capture the category management list and the pop-up modal for creating/editing a category.</span>
+                    <div class="warning-box">
+                        <div class="warning-box-title">Reserved System Categories</div>
+                        <p style="margin-bottom: 10px;">
+                            FamLedger includes some special <strong>System Categories</strong> that cannot be modified or deleted as they are required for the correct operation of the app's automation:
+                        </p>
+                        <ul style="margin-bottom: 0;">
+                            <li><strong>Transfer (Giroconto)</strong>: Used automatically when you transfer funds between two of your accounts (internal transfers).</li>
+                            <li><strong>Reimbursement, Settle, Investment, Salary, Other</strong>: Default and essential categories to track automatic family balance transactions.</li>
+                            <li><strong>Loan (Prestito)</strong>: An exceptionally powerful system category designed for advanced expenses. Unlike regular shared expenses (where the amount is split including the payer's share), when you record a movement marked as a <strong>Loan</strong>, the app assigns 100% of the amount as an exclusive debt divided among the other selected participants. The payer's share is set to zero automatically.</li>
+                        </ul>
+                    </div>
+
+                    <div class="screenshot-container">
+                        <img src="categorie_en.jpeg" alt="Categories Screen">
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The category management screen</p>
                     </div>
                 </div>
 
-                <!-- 9.2 RECURRING ITEMS -->
+                <!-- 9.2 RECURRING TRANSACTIONS -->
                 <div id="cap9-2" style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
-                    <h4>🔄 9.2 Recurring Transactions & Automations</h4>
+                    <h4>🔄 9.2 Recurring Transactions and Automations</h4>
                     <p>
-                        Don't log the same bills by hand every month! For recurring bills, streaming subscriptions (Netflix, Spotify), rent, or salary, set an automatic rule:
+                        Stop entering the same transactions by hand every month! For utility bills, streaming subscriptions (Netflix, Spotify), rent, or salaries, set a recurring rule:
                     </p>
                     <ol>
-                        <li>In <strong>Settings > Recurring Transactions</strong>, tap the <strong>"+"</strong> button.</li>
-                        <li>Fill in the details (amount, description, account, and category).</li>
-                        <li>Set the **Frequency** (e.g., every 1 Month, every 1 Year, every 2 Weeks).</li>
-                        <li>At the due date, FamLedger will automatically inject the transaction and send you a notification.</li>
+                        <li>In <strong>Settings > Recurring Transactions</strong>, press <strong>"+"</strong>.</li>
+                        <li>Fill in the details (amount, description, debit account, and category).</li>
+                        <li>Set the "Frequency" (e.g. Every 1 Month, Every 1 Year, Every Week).</li>
+                        <li>When the due date arrives, FamLedger will automatically inject the transaction into your ledger.</li>
                     </ol>
 
-                    <div class="screenshot-placeholder">
-                        <span class="screenshot-icon">📸</span>
-                        <span class="screenshot-title">SCHERMO_RICORRENTI_LISTA</span>
-                        <span class="screenshot-desc">Capture the screen showing configured active recurring payments rules.</span>
+                    <div class="screenshot-container">
+                        <img src="ricorrenti_en.jpeg" alt="Recurring Movements Screen">
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The recurring transactions screen</p>
                     </div>
                 </div>
 
-                <!-- 9.3 SECURITY & PRIVACY -->
+                <!-- 9.3 SECURITY AND PRIVACY -->
                 <div id="cap9-3" style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
-                    <h4>🔒 9.3 Security & Privacy (Password & Obfuscation)</h4>
+                    <h4>🔒 9.3 Security and Privacy (Password & Obfuscation)</h4>
                     <p>
-                        FamLedger offers two advanced tiers to protect your sensitive financial data when using the app in public:
+                        FamLedger offers two advanced security tiers to protect your sensitive financial data when using the app in public:
                     </p>
                     <ul>
-                        <li><strong>🔒 Lock Password (Offline)</strong>: Toggle it on to secure the start of the app with a local password or PIN. Features hint recovery after 3 wrong attempts.</li>
-                        <li><strong>🕶️ Obfuscate Amounts Mode</strong>: Toggling this option instantly hides all balance figures on the Dashboard and accounts screens under placeholders (e.g., <em>•••.•• $</em>). Simply tap them to temporarily reveal, making it perfect for public transit or in crowded environments!</li>
+                        <li><strong>🔒 Security Password (Offline)</strong>: If enabled in settings, it protects access to the application by requesting the password at launch. In case you enter an incorrect password, <strong>the configured password hint will be shown immediately starting from the very first wrong attempt</strong>, helping you quickly unlock your data in case of minor memory lapses.</li>
+                        <li><strong>🕶️ Obfuscate Amounts Mode</strong>: Activating this switch temporarily replaces all figures and balances on the main Dashboard and accounts with discreet dots (e.g. <em>•••,•• $</em>). You can temporarily reveal them with a simple tap, perfect when opening the app on public transit or around other people!</li>
                     </ul>
 
-                    <div class="screenshot-placeholder">
-                        <span class="screenshot-icon">📸</span>
-                        <span class="screenshot-title">SCHERMO_OFFUSCAMENTO_ACTIVE</span>
-                        <span class="screenshot-desc">Capture the main Dashboard screen with "Obfuscate Amounts" active to showcase how balances are blurred.</span>
+                    <div class="screenshot-container">
+                        <img src="sicurezza_en.jpeg" alt="Security Settings Screen">
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The security settings screen</p>
                     </div>
                 </div>
 
-                <!-- 9.4 PROFILE & LOCAL PREFERENCES -->
+                <!-- 9.4 PROFILE AND PREFERENCES -->
                 <div style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
-                    <h4>💱 9.4 Profile, Participants, and Local Settings</h4>
+                    <h4>💱 9.4 Profile, Participants, and Local Preferences</h4>
                     <ul>
-                        <li><strong>Edit Profile</strong>: Change your main name at any time.</li>
-                        <li><strong>Manage Participants</strong>: Add, modify, or disable shared family members/roommates.</li>
-                        <li><strong>Language & Currency</strong>: Select your preferred currency and localized app translation on the fly from the 6 available languages (English, Italian, Spanish, French, German, Portuguese).</li>
+                        <li><strong>Edit Profile</strong>: Change your name at any time.</li>
+                        <li><strong>Manage Participants</strong>: Add, edit, or disable family members/partners/roommates with whom you split common debts.</li>
+                        <li><strong>Language and Currency</strong>: Choose your preferred currency and app localization on the fly from the 6 available languages (Italian, English, Spanish, French, German, Portuguese) to customize the app to your region.</li>
                     </ul>
                 </div>
             </section>
@@ -785,70 +803,62 @@
             <section id="cap10">
                 <h2>👑 Chapter 10: FamLedger PRO (Exclusive Features)</h2>
                 <p>
-                    For users who want to deep-dive into their financial health and guarantee the long-term safety of their historical records, we built **FamLedger PRO**. 
-                    A single *One-Time purchase* (buy once on the store, keep it forever) that unlocks the full potential of the application and **directly supports the hard work and dedication of our small independent team**. Your purchase enables us to keep improving FamLedger, keeping it secure, 100% offline, free of trackers, and fully dedicated to your privacy!
+                    For users who wish to deep-dive into their financial situation and guarantee the security of their historical data over time, we created "FamLedger PRO". 
+                    A single <em>One-Time</em> purchase (buy once in the Store, keep it forever) that unlocks the full potential of the application and "is a direct and fundamental support for the hard work and dedication of our small independent team". Your purchase allows us to keep improving FamLedger, keeping it safe, 100% offline, free from trackers, and completely focused on your privacy!
                 </p>
-
-                <div class="screenshot-placeholder">
-                    <span class="screenshot-icon">📸</span>
-                    <span class="screenshot-title">SCHERMO_UPGRADE_PRO</span>
-                    <span class="screenshot-desc">Capture the premium presentation and store purchase overlay for the PRO version (ProFeatureOverlay).</span>
-                </div>
 
                 <!-- 10.1 STATISTICS -->
                 <div id="cap10-1">
-                    <h4>📊 10.1 Net Worth Charts & Statistics</h4>
+                    <h4>📊 10.1 Net Worth Charts and Statistics</h4>
                     <p>
                         Understanding the overall evolution of your wealth over time is key to making wise financial decisions.
                     </p>
 
                     <div class="pro-box">
                         <div class="pro-box-title">PRO Exclusive Section</div>
-                        The entire **Statistics** dashboard and detailed Net Worth charts are locked behind the **PRO** upgrade.
+                        The entire display of the "Statistics" section and the related detailed charts of the net worth trend are unlockable only by purchasing the "PRO" version of the application.
                     </div>
 
                     <p>
-                        Activating the PRO version unlocks a beautiful line chart tracing your **Net Worth** history. This figure aggregates the balances of all your accounts and the live updated valuations of all your market and fixed-rate investments.
+                        By activating the PRO version, you will have access to a line chart showing the evolution of your overall "Net Worth" over time. This value is calculated by adding in real time the balances of all your accounts and the live updated valuations of all your investments (both markets and fixed yields).
                     </p>
 
-                    <div class="screenshot-placeholder">
-                        <span class="screenshot-icon">📸</span>
-                        <span class="screenshot-title">SCHERMO_STATISTICHE</span>
-                        <span class="screenshot-desc">Capture the Net Worth history line chart and asset distribution breakdown in the PRO Statistics dashboard.</span>
+                    <div class="screenshot-container">
+                        <img src="statistiche_en.jpeg" alt="Statistics Screen">
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The PRO statistics and charts screen</p>
                     </div>
                 </div>
 
-                <!-- 10.2 BACKUP & IMPORT -->
+                <!-- 10.2 BACKUP -->
                 <div id="cap10-2" style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
-                    <h4>💾 10.2 Backup, Restore & Data Migration (JSON/CSV)</h4>
+                    <h4>💾 10.2 Backup, Restore and Migration (JSON/CSV)</h4>
                     <p>
-                        Since FamLedger is 100% offline, **making backups is crucial**. If you change phones or reset your device, you will need this file to avoid losing your historical data.
+                        Since FamLedger is 100% offline, "making backups is crucial". If you change phones or format the device, you will need this file to avoid losing your historical data.
                     </p>
 
                     <div class="pro-box">
                         <div class="pro-box-title">PRO Exclusive Section</div>
-                        Accessing the Backup Hub for complete database imports/exports via JSON or CSV is part of **FamLedger PRO** to guarantee professional-grade data ownership.
+                        Accessing full data export and import via JSON or CSV is part of the "FamLedger PRO" features to guarantee you the maximum professional-grade data ownership and security.
                     </div>
 
                     <p>
-                        <strong>JSON Export</strong>: Creates a fully encrypted file of your accounts, transactions, shared co-debtors, and investments, ready to be sent to Google Drive, email, or your local computer.
+                        <strong>JSON Export</strong>: Creates a file containing all your accounts, transactions, participants, and investments in an encrypted format ready to be shared on Google Drive, sent via email, or saved to your computer.
                     </p>
                     <p>
-                        <strong>CSV Export</strong>: Lets you export your entire transaction history in a spreadsheets-ready format (compatible with Excel or Google Sheets) for custom analysis on your computer.
+                        <strong>CSV Export</strong>: Allows you to export the list of transactions in a spreadsheet format compatible with Excel or Google Sheets to conduct customized analysis and charts on your computer.
                     </p>
 
-                    <div class="screenshot-placeholder">
-                        <span class="screenshot-icon">📸</span>
-                        <span class="screenshot-title">SCHERMO_BACKUP_HUB</span>
-                        <span class="screenshot-desc">Capture the Backup Hub screen with JSON/CSV export and import options clearly visible.</span>
+                    <div class="screenshot-container">
+                        <img src="backup_en.jpeg" alt="Backup Screen">
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The backup and import/export screen</p>
                     </div>
                 </div>
 
-                <!-- 10.3 100% AD-FREE EXPERIENCE -->
+                <!-- 10.3 AD-FREE -->
                 <div style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
                     <h4>🚫 10.3 100% Ad-Free Experience</h4>
                     <p>
-                        Upgrading to the PRO version instantly **removes all advertisement banners** from all operational screens of the app (Dashboard, Transactions, Investments, Anomalies, Goals, Achievements), giving you a pristine, distraction-free analysis workspace.
+                        By unlocking the PRO version, the application will instantly remove "every form of advertisement banner" or insertion from all operational screens of your family budget (Dashboard, Movements, Investments, Anomalies, Milestones, Goals), leaving you with a clean, distraction-free workspace.
                     </p>
                 </div>
             </section>
