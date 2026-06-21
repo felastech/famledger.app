@@ -400,6 +400,7 @@
                 <li class="nav-item"><a href="#cap10">👑 10. PRO Features</a></li>
                 <li class="nav-item nav-sub-item"><a href="#cap10-1">📊 10.1 Statistics</a></li>
                 <li class="nav-item nav-sub-item"><a href="#cap10-2">💾 10.2 Backup & Import</a></li>
+				<li class="nav-item nav-sub-item"><a href="#cap10-3">🚫 10.3 Ad-Free</a></li>
             </ul>
         </aside>
 
@@ -500,10 +501,10 @@
                     <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">The transaction entry screen</p>
                 </div>
 
-                <h3>2. Internal Transfers (Giroconti)</h3>
+                <h3>2. Transfers (Internal Transfers)</h3>
                 <p>
                     If you move money from one account to another (for example, withdrawing €100 from the ATM to put it in your Cash wallet):
-                    activate the <strong>Internal Transfer (Giroconto)</strong> toggle at the top of the screen. You will be asked for the "Source Account" (where the money comes from) and the "Destination Account" (where it goes).
+                    activate the <strong>Transfer</strong> toggle at the top of the screen. You will be asked for the "Source Account" (where the money comes from) and the "Destination Account" (where it goes).
                 </p>
 
                 <div class="screenshot-container">
@@ -517,7 +518,7 @@
                 </p>
                 <ol>
                     <li>Go to <strong>Settings > Recurring Transactions</strong>.</li>
-                    <li>Press <strong>"+"</strong> and set the recurrence interval (e.g. Every 1 Month, Every 1 Year).</li>
+                    <li>Press <strong>"+"</strong> and set the frequency (choosing from Weekly, Monthly, or Yearly).</li>
                     <li>The app will automatically generate the transaction, without you having to do anything!</li>
                 </ol>
             </section>
@@ -574,6 +575,7 @@
                     <li>Select the participants involved (e.g. Giulia).</li>
                     <li>Choose to split <strong>equally</strong> or assign <strong>custom shares</strong> (e.g. €75 to Giulia).</li>
                     <li>Save the expense. The app will record that you advanced €150 and Giulia owes you €75.</li>
+					<li><strong>Note on the Loan category</strong>: An exceptionally powerful system category designed for advanced payments. Unlike regular shared expenses (where the amount is split including the payer's share), when you record a transaction marked as a <strong>Loan</strong>, the app assigns 100% of the amount as an exclusive debt divided among the other selected participants. The payer's share is set to zero automatically.</li>
                 </ol>
                 
                 <div class="screenshot-container">
@@ -641,20 +643,21 @@
                     Financial education meets game design! As you use the application in a healthy and consistent way, you will automatically unlock milestones and receive virtual medals:
                 </p>
                 <ul>
-                    <li><strong>Budget Sniper</strong>: Awarded if you stay within your monthly spending budget with extreme precision (spending between 90% and 100% of the planned amount).</li>
-                    <li><strong>Quantum Leap</strong>: Unlocked if in a single month your savings surplus (Incomes - Expenses) exceeds 30% of your total monthly income.</li>
-                    <li><strong>Goal Hunter</strong>: Achieved as soon as you successfully complete at least one of your savings goals.</li>
+                    <li><strong>Budget Sniper</strong>: Awarded if you stay within your monthly spending budget with precision (spending between 90% and 100% of the planned amount).</li>
+                    <li><strong>Savings Sprint</strong>: Unlocked if in a single month your savings surplus (Incomes - Expenses) exceeds 30% of your total monthly income.</li>
+                    <li><strong>Goal Crusher</strong>: Achieved as soon as you successfully complete at least one of your savings goals.</li>
                     <li><strong>Clean Slate</strong>: Unlocked the moment you settle all active debts with other participants in the shared budget.</li>
-                    <li><strong>Steady Saver</strong>: A reward for your consistency, unlocked by maintaining a positive surplus (income greater than expenses) for 6 consecutive months.</li>
+                    <li><strong>Consistent Saver</strong>: A reward for your consistency, unlocked by maintaining a positive surplus (income greater than expenses) for 6 consecutive months.</li>
                     <li><strong>Early Bird</strong>: Awarded if you record at least one movement in the first 5 days of the month for 3 consecutive months.</li>
                     <li><strong>Mindful Planner</strong>: "One-Time" medal unlocked when you first configure a monthly spending budget.</li>
-                    <li><strong>Debt Extinguished</strong>: A special "One-Time" milestone unlocked when all historical debts registered in the app are definitely settled.</li>
-                    <li><strong>Net Worth Milestones (One-Time)</strong>: Four exclusive gold medals celebrating the growth of your overall net worth (sum of cash accounts and the valuation of investments):
+                    <li><strong>Debt Settled</strong>: A special "One-Time" milestone unlocked when all historical debts registered in the app are definitely settled.</li>
+                    <li><strong>Net Worth Milestones (One-Time)</strong>: Five exclusive gold medals celebrating the growth of your overall net worth (sum of cash accounts and the valuation of investments):
                         <ul>
-                            <li><strong>Beginning of the Journey</strong>: Reach a net worth of at least 10,000.</li>
+                            <li><strong>Start of the Journey</strong>: Reach a net worth of at least 10,000.</li>
                             <li><strong>Capital Builder</strong>: Reach a net worth of at least 50,000.</li>
                             <li><strong>Six-Figure Wealth</strong>: Reach a net worth of at least 100,000.</li>
-                            <li><strong>Financial Independence</strong>: Reach the incredible milestone of 250,000 in total net worth.</li>
+                            <li><strong>Financial Freedom</strong>: Reach the incredible milestone of 250,000 in total net worth.</li>
+                            <li><strong>Financial Independence</strong>: Reach the incredible milestone of 500,000 in total net worth.</li>
                         </ul>
                     </li>
                 </ul>
@@ -669,7 +672,7 @@
             <section id="cap8">
                 <h2>🔍 Chapter 8: Spending Anomaly Detection</h2>
                 <p>
-                    The <strong>Anomalies</strong> screen acts as an intelligent sentinel for your family budget. Instead of just displaying a list of expenses, the application compares every single expense of the current month in real time with your <strong>historical average spending per transaction</strong> in that specific category (analyzing history up to the previous 24 months).
+                    The <strong>Anomalies</strong> screen acts as an intelligent sentinel for your family budget. Instead of just displaying a list of expenses, the application compares every single expense of the current month in real time with your <strong>historical average spending per transaction</strong> in that specific category (by default analyzing history up to the previous 24 months (value customizable in settings)).
                 </p>
                 
                 <p>
@@ -681,19 +684,14 @@
                     The app analyzes the registered transactions and processes three different severity levels for the overrun, based on the configurable percentage thresholds in <strong>Settings > Anomaly Thresholds</strong>:
                 </p>
                 <ul>
-                    <li><strong>🔵 Low Anomaly</strong>: Triggered if the expense exceeds the category's historical average beyond the set minimum threshold (e.g. greater than +20%). Displayed with a blue badge.</li>
-                    <li><strong>🟡 Medium Anomaly</strong>: Triggered if the expense exceeds the historical average beyond the intermediate threshold (e.g. greater than +50%). Highlighted in yellow/orange.</li>
-                    <li><strong>🔴 High Anomaly</strong>: Detected when a single transaction records an exceptional peak exceeding the average beyond the maximum threshold (e.g. greater than +100%). Displayed with a red badge to call your attention immediately.</li>
+                    <li><strong>🔵 Low Anomaly</strong>: Triggered if the expense exceeds the category's historical average beyond the set minimum threshold (e.g. greater than +10%). Displayed with a blue badge.</li>
+                    <li><strong>🟡 Medium Anomaly</strong>: Triggered if the expense exceeds the historical average beyond the intermediate threshold (e.g. greater than +30%). Highlighted in yellow/orange.</li>
+                    <li><strong>🔴 High Anomaly</strong>: Detected when a single transaction records an exceptional peak exceeding the average beyond the maximum threshold (e.g. greater than +50%). Displayed with a red badge to call your attention immediately.</li>
                 </ul>
 
                 <p>
                     Within the Anomalies page, you can use the convenient filters at the top to analyze specific periods (selecting <strong>Year</strong> and <strong>Month</strong>) or to filter the anomalies displayed based on their severity level (<strong>All</strong>, <strong>Low</strong>, <strong>Medium</strong>, <strong>High</strong>).
                 </p>
-
-                <div class="info-box">
-                    <div class="info-box-title">Feature Availability</div>
-                    Anomaly Detection is an <strong>entirely free feature accessible to all users</strong>. If you are using the standard version of the app, an advertisement banner will be shown on this screen, which is removed upon unlocking the PRO version.
-                </div>
 
                 <div class="screenshot-container">
                     <img src="anomalie_en.jpeg" alt="Anomalies Screen">
@@ -723,7 +721,7 @@
                         <strong>Creating a Custom Category</strong>:
                     </p>
                     <ol>
-                        <li>Access the <strong>Categories</strong> section (from the menu <em>More > Settings > Categories</em>).</li>
+                        <li>Access the <strong>Categories</strong> section (from the <em>Settings > Categories</em> menu).</li>
                         <li>You will find the convenient creation/modification panel directly at the top of the screen.</li>
                         <li>Enter the name you wish to give to the category in the <strong>Category Name</strong> field (e.g. <em>Gym</em> or <em>Restaurants</em>).</li>
                         <li>Choose the category type between <strong>Expenses</strong> or <strong>Incomes</strong> by selecting the corresponding filters. The identifying color (red for expenses and green for incomes) is paired completely automatically and dynamically by the app to maintain color harmony, so you won't need to select it manually.</li>
@@ -740,9 +738,9 @@
                             FamLedger includes some special <strong>System Categories</strong> that cannot be modified or deleted as they are required for the correct operation of the app's automation:
                         </p>
                         <ul style="margin-bottom: 0;">
-                            <li><strong>Transfer (Giroconto)</strong>: Used automatically when you transfer funds between two of your accounts (internal transfers).</li>
-                            <li><strong>Reimbursement, Settle, Investment, Salary, Other</strong>: Default and essential categories to track automatic family balance transactions.</li>
-                            <li><strong>Loan (Prestito)</strong>: An exceptionally powerful system category designed for advanced expenses. Unlike regular shared expenses (where the amount is split including the payer's share), when you record a movement marked as a <strong>Loan</strong>, the app assigns 100% of the amount as an exclusive debt divided among the other selected participants. The payer's share is set to zero automatically.</li>
+                            <li><strong>Transfer</strong>: Used automatically when you transfer funds between two of your accounts (internal transfers).</li>
+                            <li><strong>Reimbursement, Initial balance, Investment, Salary, Other</strong>: Default and essential categories to track automatic family balance transactions.</li>
+                            <li><strong>Loan</strong>: An exceptionally powerful system category designed for advanced expenses. Unlike regular shared expenses (where the amount is split including the payer's share), when you record a movement marked as a <strong>Loan</strong>, the app assigns 100% of the amount as an exclusive debt divided among the other selected participants. The payer's share is set to zero automatically.</li>
                         </ul>
                     </div>
 
@@ -761,7 +759,7 @@
                     <ol>
                         <li>In <strong>Settings > Recurring Transactions</strong>, press <strong>"+"</strong>.</li>
                         <li>Fill in the details (amount, description, debit account, and category).</li>
-                        <li>Set the "Frequency" (e.g. Every 1 Month, Every 1 Year, Every Week).</li>
+                        <li>Set the "Frequency" (choosing from Weekly, Monthly, or Yearly).</li>
                         <li>When the due date arrives, FamLedger will automatically inject the transaction into your ledger.</li>
                     </ol>
 
@@ -804,7 +802,7 @@
                 <h2>👑 Chapter 10: FamLedger PRO (Exclusive Features)</h2>
                 <p>
                     For users who wish to deep-dive into their financial situation and guarantee the security of their historical data over time, we created "FamLedger PRO". 
-                    A single <em>One-Time</em> purchase (buy once in the Store, keep it forever) that unlocks the full potential of the application and "is a direct and fundamental support for the hard work and dedication of our small independent team". Your purchase allows us to keep improving FamLedger, keeping it safe, 100% offline, free from trackers, and completely focused on your privacy!
+                    A single <em>una tantum</em> (one-time) purchase (buy once in the Store, keep it forever) that unlocks the full potential of the application and represents direct and fundamental support for the work and dedication of our independent team. Your purchase allows us to keep improving FamLedger, keeping it safe, 100% offline, free from trackers, and completely focused on your privacy!
                 </p>
 
                 <!-- 10.1 STATISTICS -->
@@ -820,7 +818,7 @@
                     </div>
 
                     <p>
-                        By activating the PRO version, you will have access to a line chart showing the evolution of your overall "Net Worth" over time. This value is calculated by adding in real time the balances of all your accounts and the live updated valuations of all your investments (both markets and fixed yields).
+                        By activating the PRO version, you will have access to a series of advanced analysis tools: from the <strong>monthly expenses</strong> chart to the <strong>historical comparison</strong> between the months of two years of your choice, up to the line chart showing the evolution of your overall <strong>Net Worth</strong>. This final value is calculated in real time by summing the balances of all your accounts and the updated valuation of all your investments (both variable markets and fixed yields).
                     </p>
 
                     <div class="screenshot-container">
@@ -833,7 +831,7 @@
                 <div id="cap10-2" style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
                     <h4>💾 10.2 Backup, Restore and Migration (JSON/CSV)</h4>
                     <p>
-                        Since FamLedger is 100% offline, "making backups is crucial". If you change phones or format the device, you will need this file to avoid losing your historical data.
+                        Since FamLedger is a 100% offline application, making backups is crucial. If you change phones or format the device, you will need this file to avoid losing your financial history.
                     </p>
 
                     <div class="pro-box">
@@ -842,7 +840,7 @@
                     </div>
 
                     <p>
-                        <strong>JSON Export</strong>: Creates a file containing all your accounts, transactions, participants, and investments in an encrypted format ready to be shared on Google Drive, sent via email, or saved to your computer.
+                        <strong>JSON Export</strong>: Creates a file containing all your accounts, transactions, participants, and investments ready to be shared on Google Drive, sent via email, or saved to your computer.
                     </p>
                     <p>
                         <strong>CSV Export</strong>: Allows you to export the list of transactions in a spreadsheet format compatible with Excel or Google Sheets to conduct customized analysis and charts on your computer.
@@ -855,10 +853,10 @@
                 </div>
 
                 <!-- 10.3 AD-FREE -->
-                <div style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
+                <div id="cap10-3" style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
                     <h4>🚫 10.3 100% Ad-Free Experience</h4>
                     <p>
-                        By unlocking the PRO version, the application will instantly remove "every form of advertisement banner" or insertion from all operational screens of your family budget (Dashboard, Movements, Investments, Anomalies, Milestones, Goals), leaving you with a clean, distraction-free workspace.
+                        By unlocking the PRO version, the application will instantly remove every form of advertisement banner or insertion from all operational screens of your family budget (Dashboard, Movements, Investments, Anomalies, Achievements, Goals), leaving you with a clean, distraction-free workspace.
                     </p>
                 </div>
             </section>

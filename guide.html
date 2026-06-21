@@ -422,6 +422,7 @@
                 <li class="nav-item"><a href="#cap10">👑 10. Funzionalità PRO</a></li>
                 <li class="nav-item nav-sub-item"><a href="#cap10-1">📊 10.1 Statistiche</a></li>
                 <li class="nav-item nav-sub-item"><a href="#cap10-2">💾 10.2 Backup & Import</a></li>
+				<li class="nav-item nav-sub-item"><a href="#cap10-3">🚫 10.3 Senza Pubblicità</a></li>
             </ul>
         </aside>
 
@@ -597,12 +598,14 @@
                     <li>Seleziona i partecipanti coinvolti (es. Giulia).</li>
                     <li>Scegli se dividere in <strong>parti uguali</strong> o se assegnare "quote personalizzate" (es. 75€ a Giulia).</li>
                     <li>Salva la spesa. L'app registrerà che tu hai anticipato 150€ e che  Giulia ti deve 75€</li>
+					<li><strong>Nota per la categoria Prestito</strong>: Una categoria di sistema eccezionalmente potente progettata per le spese anticipate. A differenza delle spese condivise normali (dove la cifra viene ripartita includendo anche la quota di chi ha pagato), quando registri un movimento contrassegnato come <strong>Prestito</strong>, l'app assegna il 100% dell'importo come debito esclusivo suddiviso tra gli altri partecipanti selezionati. La quota di chi ha effettuato il pagamento viene posta automaticamente a zero.</li>
                 </ol>
 				
 		      <div class="screenshot-container" style="text-align: center; margin: 30px 0;">
                     <img src="spesaCondivisa.jpeg" alt="Schermata spesa condivisa" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                     <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px; font-style: italic;">La schermata spesa condivisa</p>
               </div>
+			  
 
                 <h3>3. Saldo Veloce dei Debiti (Singolo o Tutti)</h3>
                 <p>
@@ -677,13 +680,14 @@
                     <li><strong>Early Bird</strong>: Assegnato se registri almeno un movimento nei primi 5 giorni del mese per 3 mesi consecutivi.</li>
                     <li><strong>Pianificatore Consapevole</strong>: Medaglia sbloccata "Una Tantum" nel momento in cui configuri per la prima volta un budget di spesa mensile.</li>
                     <li><strong>Debito Estinto</strong>: Un traguardo speciale "Una Tantum" sbloccato quando tutti i debiti storici registrati nell'applicazione risultano definitivamente saldati.</li>
-                    <li><strong>Traguardi di Patrimonio Netto (Una Tantum)</strong>: Quattro medaglie d'oro esclusive che celebrano la crescita del tuo patrimonio complessivo (somma di conti liquidi e controvalore degli investimenti):
+                    <li><strong>Traguardi di Patrimonio Netto (Una Tantum)</strong>: Cinque medaglie d'oro esclusive che celebrano la crescita del tuo patrimonio complessivo (somma di conti liquidi e controvalore degli investimenti):
                         <ul>
                             <li><strong>L'Inizio del Viaggio</strong>: Raggiungere un patrimonio netto di almeno 10.000.</li>
                             <li><strong>Costruttore di Capitali</strong>: Raggiungere un patrimonio netto di almeno 50.000.</li>
                             <li><strong>Patrimonio a Sei Cifre</strong>: Raggiungere un patrimonio netto di almeno 100.000.</li>
-                            <li><strong>Indipendenza Finanziaria</strong>: Raggiungere l'incredibile traguardo di 250.000 in patrimonio netto totale.</li>
-                        </ul>
+                            <li><strong>Libertà Finanziaria</strong>: Raggiungere l'incredibile traguardo di 250.000 in patrimonio netto totale.</li>
+                            <li><strong>Indipendenza Finanziaria</strong>: Raggiungere l'incredibile traguardo di 500.000 in patrimonio netto totale.</li>  
+					  </ul>
                     </li>
                 </ul>
 
@@ -697,7 +701,7 @@
             <section id="cap8">
                 <h2>🔍 Capitolo 8: Rilevamento delle Anomalie di Spesa</h2>
                 <p>
-                    La schermata <strong>Anomalie</strong> agisce come una sentinella intelligente per il tuo bilancio familiare. Invece di limitarsi a mostrare un elenco di spese, l'applicazione confronta in tempo reale ogni singola spesa del mese corrente con la tua <strong>media storica di spesa per transazione</strong> in quella determinata categoria (analizzando lo storico fino a 24 mesi precedenti).
+                    La schermata <strong>Anomalie</strong> agisce come una sentinella intelligente per il tuo bilancio familiare. Invece di limitarsi a mostrare un elenco di spese, l'applicazione confronta in tempo reale ogni singola spesa del mese corrente con la tua <strong>media storica di spesa per transazione</strong> in quella determinata categoria (di default analizzando lo storico fino a 24 mesi precedenti (valore modificabile dalle impostazioni)).
                 </p>
                 
                 <p>
@@ -709,19 +713,14 @@
                     L'app analizza le transazioni registrate ed elabora tre diversi livelli di severità per lo sforamento, basandosi sulle soglie percentuali configurabili in <strong>Impostazioni > Soglie Anomalia</strong>:
                 </p>
                 <ul>
-                    <li><strong>🔵 Anomalia Bassa</strong>: Segnalata se la spesa supera la media storica della categoria oltre la soglia minima impostata (es. superiore al +20%). Viene visualizzata con un'etichetta blu.</li>
-                    <li><strong>🟡 Anomalia Media</strong>: Segnalata se la spesa supera la media storica oltre la soglia intermedia (es. superiore al +50%). Viene evidenziata in giallo/arancione.</li>
-                    <li><strong>🔴 Anomalia Alta</strong>: Rilevata quando la singola transazione registra un picco eccezionale che supera la media oltre la soglia massima (es. superiore al +100%). Viene mostrata con un'etichetta rossa per richiamare subito la tua attenzione.</li>
+                    <li><strong>🔵 Anomalia Bassa</strong>: Segnalata se la spesa supera la media storica della categoria oltre la soglia minima impostata (es. superiore al +10%). Viene visualizzata con un'etichetta blu.</li>
+                    <li><strong>🟡 Anomalia Media</strong>: Segnalata se la spesa supera la media storica oltre la soglia intermedia (es. superiore al +30%). Viene evidenziata in giallo/arancione.</li>
+                    <li><strong>🔴 Anomalia Alta</strong>: Rilevata quando la singola transazione registra un picco eccezionale che supera la media oltre la soglia massima (es. superiore al +50%). Viene mostrata con un'etichetta rossa per richiamare subito la tua attenzione.</li>
                 </ul>
 
                 <p>
                     All'interno della pagina Anomalie, puoi utilizzare i comodi filtri in alto per analizzare periodi specifici (selezionando <strong>Anno</strong> e <strong>Mese</strong>) oppure per filtrare le anomalie visualizzate in base al loro livello di gravità (<strong>Tutti</strong>, <strong>Bassa</strong>, <strong>Media</strong>, <strong>Alta</strong>).
                 </p>
-
-                <div class="info-box">
-                    <div class="info-box-title">Disponibilità della Funzione</div>
-                    Il Rilevamento delle Anomalie è una funzionalità <strong>interamente gratuita e accessibile a tutti gli utenti</strong>. Se utilizzi la versione standard dell'app, in questa schermata verrà visualizzato un banner pubblicitario, che viene rimosso sbloccando la versione PRO.
-                </div>
 
      		<div class="screenshot-container" style="text-align: center; margin: 30px 0;">
                     <img src="anomalie.jpeg" alt="Schermata anomalie" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
@@ -751,7 +750,7 @@
                         <strong>Creare una Categoria Personalizzata</strong>:
                     </p>
                     <ol>
-                        <li>Accedi alla sezione <strong>Categorie</strong> (dal menu <em>Altro > Impostazioni > Categorie</em>).</li>
+                        <li>Accedi alla sezione <strong>Categorie</strong> (dal menu <em> Impostazioni > Categorie</em>).</li>
                         <li>Troverai direttamente in cima alla schermata il comodo pannello di inserimento/modifica.</li>
                         <li>Inserisci il nome che desideri dare alla categoria nel campo <strong>Nome Categoria</strong> (es. <em>Palestra</em> o <em>Ristoranti</em>).</li>
                         <li>Scegli la tipologia della categoria tra <strong>Uscite</strong> o <strong>Entrate</strong> selezionando i filtri corrispondenti. Il colore identificativo (rosso per le uscite e verde per le entrate) viene abbinato in modo del tutto automatico e dinamico dall'app per mantenere l'armonia cromatica, perciò non dovrai selezionarlo manualmente.</li>
@@ -789,7 +788,7 @@
                     <ol>
                         <li>In <strong>Impostazioni > Movimenti Ricorrenti</strong>, premi il tasto <strong>"+"</strong>.</li>
                         <li>Compila i dettagli (importo, descrizione, conto addebito e categoria).</li>
-                        <li>Imposta la "Frequenza" (es. ogni 1 Mese, ogni 1 Anno, ogni  Settimana).</li>
+                        <li>Imposta la "Frequenza" (scegliendo tra Settimanale, Mensile o Annuale).</li>
                         <li>All'arrivo della scadenza, FamLedger inserirà automaticamente la transazione nel tuo bilancio.</li>
                     </ol>
 
@@ -822,7 +821,7 @@
                     <ul>
                         <li><strong>Modifica Profilo</strong>: Cambia il tuo nome in qualunque momento.</li>
                         <li><strong>Gestione Partecipanti</strong>: Aggiungi, modifica o disattiva i familiari/coniugi/coinquilini con cui dividi i debiti comuni.</li>
-                        <li><strong>Lingua e Valuta</strong>: Scegli runtime la tua valuta preferita e la localizzazione in-app tra le 6 lingue disponibili (Italiano, Inglese, Spagnolo, Francese, Tedesco, Portoghese) per adattare l'app al tuo locale di riferimento.</li>
+                        <li><strong>Lingua e Valuta</strong>: Scegli runtime la tua valuta preferita e la localizzazione in-app tra le 6 lingue disponibili (Italiano, Inglese, Spagnolo, Francese, Tedesco, Portoghese).</li>
                     </ul>
                 </div>
             </section>
@@ -832,7 +831,7 @@
                 <h2>👑 Capitolo 10: FamLedger PRO (Funzionalità Esclusive)</h2>
                 <p>
                     Per gli utenti che desiderano analizzare a fondo la propria situazione patrimoniale e garantire la sicurezza dei propri dati storici nel tempo, abbiamo creato "FamLedger PRO". 
-                    Un unico acquisto <em>Una Tantum</em> (compri una volta sola nello Store ed è tuo per sempre) che sblocca il pieno potenziale dell'applicazione e rappresenta un supporto diretto e fondamentale al lavoro e alla dedizione del nostro team indipendente. Il tuo acquisto ci permette di continuare a migliorare FamLedger, mantenendola un'app sicura, 100% offline, priva di tracciamenti e totalmente incentrata sulla tua privacy!
+                    Un unico acquisto <em>una tantum</em> (compri una volta sola nello Store ed è tuo per sempre) che sblocca il pieno potenziale dell'applicazione e rappresenta un supporto diretto e fondamentale al lavoro e alla dedizione del nostro team indipendente. Il tuo acquisto ci permette di continuare a migliorare FamLedger, mantenendola un'app sicura, 100% offline, priva di tracciamenti e totalmente incentrata sulla tua privacy!
                 </p>
 
        
@@ -841,17 +840,16 @@
                 <div id="cap10-1">
                     <h4>📊 10.1 Grafici e Statistiche del Patrimonio Netto</h4>
                     <p>
-                        Comprendere a fondo l'andamento della propria ricchezza nel tempo è fundamental per prendere decisioni consapevoli.
+                        Comprendere a fondo l'andamento della propria ricchezza nel tempo è fondamentale per prendere decisioni consapevoli.
                     </p>
 
                     <div class="pro-box">
                         <div class="pro-box-title">Sezione Esclusiva PRO</div>
-                        L'intera visualizzazione della sezione "Statistiche" ed i relativi grafici dettagliati di andamento del patrimonio netto sono sbloccabili unicamente acquistando la versione "PRO" dell'applicazione.
+                        L'intera visualizzazione della sezione "Statistiche" ed i relativi grafici dettagliati sono sbloccabili unicamente acquistando la versione "PRO" dell'applicazione.
                     </div>
 
                     <p>
-                        Attivando la versione PRO avrai accesso ad un grafico a linee che mostra l'evoluzione del tuo "Patrimonio Netto" complessivo nel tempo. Questo valore è calcolato sommando in tempo reale il saldo di tutti i tuoi conti ed il controvalore aggiornato di tutti i tuoi investimenti (sia mercati che rendimenti fissi).
-                    </p>
+ Attivando la versione PRO avrai accesso a una serie di strumenti di analisi avanzati: dal grafico sulle <strong>spese mensili</strong> al <strong>confronto storico</strong> tra i mesi di due anni a scelta, fino al grafico a linee che mostra l'evoluzione del tuo <strong>Patrimonio Netto</strong> complessivo. Quest'ultimo valore viene calcolato in tempo reale sommando il saldo di tutti i tuoi conti e il controvalore aggiornato di tutti i tuoi investimenti (sia mercati variabili che rendimenti fissi).                    </p>
 
                		<div class="screenshot-container" style="text-align: center; margin: 30px 0;">
                     <img src="statistiche.jpeg" alt="Schermata statistiche" style="max-width: 320px; width: 100%; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
@@ -863,19 +861,19 @@
                 <div id="cap10-2" style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
                     <h4>💾 10.2 Backup, Ripristino e Migrazioni (JSON/CSV)</h4>
                     <p>
-                        Visto che FamLedger è 100% offline, fare il backup è fondamentale. Se cambi telefono o formatti il dispositivo, avrai bisogno di questo file per non perdere lo storico delle tue finanze.
+                        Poiché FamLedger è un'applicazione al 100% offline, fare il backup è fondamentale. Se cambi telefono o formatti il dispositivo, avrai bisogno di questo file per non perdere lo storico delle tue finanze.
                     </p>
 
                     <div class="pro-box">
                         <div class="pro-box-title">Sezione Esclusiva PRO</div>
-                        L'accesso all'esportazione ed importazione completa dei dati tramite JSON o CSV fa parte delle funzionalità "FamLedger PRO" per garantirti la massima professionalità e sicurezza aziendale.
+                        L'accesso all'esportazione ed importazione completa dei dati tramite JSON o CSV fa parte delle funzionalità "FamLedger PRO" per garantirti la massima professionalità e sicurezza.
                     </div>
 
                     <p>
-                        <strong>Esportazione JSON</strong>: Crea un file contenente tutti i tuoi conti, transazioni, partecipanti e investimenti in formato crittografato pronto per essere condiviso su Google Drive, inviato via email o salvato sul tuo computer.
+                        <strong>Esportazione JSON</strong>: Crea un file contenente tutti i dati della app, pronto per essere condiviso su Google Drive, inviato via email o salvato sul tuo computer.
                     </p>
                     <p>
-                        <strong>Esportazione CSV</strong>: Ti consente di esportare l'elenco delle transazioni in un foglio di calcolo compatibile con Excel o Google Sheets per condurre analisi e grafici personalizzati sul computer.
+                        <strong>Esportazione CSV</strong>: Ti consente di esportare l'elenco delle transazioni in un foglio di calcolo compatibile con Excel o Google Sheets.
                     </p>
 
                         		<div class="screenshot-container" style="text-align: center; margin: 30px 0;">
@@ -885,7 +883,7 @@
                 </div>
 
                 <!-- 10.3 SENZA PUBBLICITA -->
-                <div style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
+                <div id="cap10-3" style="margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border-color);">
                     <h4>🚫 10.3 Esperienza 100% Senza Pubblicità</h4>
                     <p>
                         Sbloccando la versione PRO, l'applicazione eliminerà all'istante ogni forma di banner pubblicitario o inserzione da tutte le schermate operative del tuo bilancio familiare (Dashboard, Movimenti, Investimenti, Anomalie, Traguardi, Obiettivi), lasciandoti uno spazio di analisi pulito e privo di distrazioni.
